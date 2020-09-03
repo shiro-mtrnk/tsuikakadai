@@ -26,15 +26,25 @@ h3{
     margin-left: 40px;font-size: 15px;
 }
 
-.nyuuryoku{
-    margin-left: 40%;
-    text-align: center;
+.nyuuryoku ul{
+    width: 500px;
+    margin: 0 auto;
 }
 
-.nyuuryoku_form{
-    text-align: left;
+.nyuuryoku ul li{
+    list-style: none;
+    
 }
 
+.nyuuryoku ul li p label{
+    margin-right: 10px;
+    width: 150px;
+    float: left
+}
+
+.nyuuryoku ul li p label .seibetsu{
+    width: 80px;
+}
 
 .nyuuryoku p{
     margin-top: 30px;
