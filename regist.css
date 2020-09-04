@@ -42,8 +42,9 @@ h3{
     float: left
 }
 
-.nyuuryoku ul li p label .seibetsu{
-    width: 80px;
+.nyuuryoku ul li p .seibetsu{
+    width: 40px;
+    margin-right: 50px;
 }
 
 .nyuuryoku p{
@@ -51,6 +52,10 @@ h3{
 }
 
 .nyuuryoku p input{
+    text-align: center;
+}
+
+.button_ichi{
     text-align: center;
 }
 
@@ -62,4 +67,20 @@ h3{
 footer{
     clear:left;width:100%;height:50px;background-color:black;
     bottom:0px;color:white;text-align:center;line-height:50px;
+}
+
+
+
+.nyuuryoku .button_ichi .button_2pL{
+    display: inline-block;
+}
+
+.nyuuryoku .button_ichi .button_2pR{
+    display: inline-block;
+}
+
+.complete{
+    text-align: center;
+    font-size: 30px;
+    font-weight: bolder;
 }

@@ -1,5 +1,5 @@
 
-<!--http://localhost/kadai1/20.09.02/regist.php-->
+<!--http://localhost/kadai1/20.09.04/regist.php-->
 
 <!doctype html>
 <html lang="ja">
@@ -156,9 +156,10 @@
                                 </select>
                             </p>
                         </li>
-                    </ul>    
-                    <div>
-                        <input  class="button" type="submit" value="確認する">
+                    </ul>
+            
+                    <div class="button_ichi">
+                        <input class="button" type="submit" value="確認する">
                     </div>
             </form>
         </main>
