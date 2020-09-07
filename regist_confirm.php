@@ -17,11 +17,11 @@
             <div class="menu">
                 <ul>
                     <li>トップ</li>
-                    <li class="kuu">プロフィール</li>
+                    <li>プロフィール</li>
                     <li>D.I.Blogについて</li>
                     <li>登録フォーム</li>
                     <li>問い合せ</li>
-                    <li class="kuu">その他</li>
+                    <li>その他</li>
                 </ul>
             </div>
         </header>

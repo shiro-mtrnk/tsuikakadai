@@ -4,7 +4,9 @@ mb_internal_encoding("utf8");
 
 $pdo = new PDO("mysql:dbname=tsuikakadai;host=localhost;","root","root");
 
-$pdo->exec("insert into kadai1(family_name,last_name,family_name_kana,last_name_kana,mail,password,gender,postal_code,prefecture,address_1,address_2,authority,delete_flag,registered_time,update_time)values('".$_POST['family_name']."','".$_POST['last_name']."','".$_POST['family_name_kana']."','".$_POST['last_name_kana']."','".$_POST['mail']."','".$_POST['password']."','".$_POST['gender']."','".$_POST['postal_code']."','".$_POST['prefecture']."','".$_POST['address_1']."','".$_POST['address_2']."','".$_POST['authority']."',0,date('Y-m-d H:i:s'),date('Y-m-d H:i:s'));");
+date_default_timezone_set('Asia/Tokyo');
+
+$pdo->exec("insert into kadai1(family_name,last_name,family_name_kana,last_name_kana,mail,password,gender,postal_code,prefecture,address_1,address_2,authority,delete_flag,registered_time,update_time)values('".$_POST['family_name']."','".$_POST['last_name']."','".$_POST['family_name_kana']."','".$_POST['last_name_kana']."','".$_POST['mail']."','".$_POST['password']."','".$_POST['gender']."','".$_POST['postal_code']."','".$_POST['prefecture']."','".$_POST['address_1']."','".$_POST['address_2']."','".$_POST['authority']."',0,'".date('Y-m-d H:i:s')."','".date('Y-m-d H:i:s')."');");
 
 
 
@@ -28,11 +30,11 @@ $pdo->exec("insert into kadai1(family_name,last_name,family_name_kana,last_name_
             <div class="menu">
                 <ul>
                     <li>トップ</li>
-                    <li class="kuu">プロフィール</li>
+                    <li>プロフィール</li>
                     <li>D.I.Blogについて</li>
                     <li>登録フォーム</li>
                     <li>問い合せ</li>
-                    <li class="kuu">その他</li>
+                    <li>その他</li>
                 </ul>
             </div>
         </header>
