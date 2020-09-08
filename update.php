@@ -1,11 +1,10 @@
-
-<!--http://localhost/kadai1/20.09.08/regist.php-->
+<!--http://localhost/kadai1/20.09.08/update.php-->
 
 <!doctype html>
 <html lang="ja">
     <head>
         <meta charset="utf-8">
-        <title>アカウント登録画面</title>
+        <title>アカウント更新画面</title>
         <link rel="stylesheet" type="text/css" href="regist.css">
     </head>
     
@@ -28,12 +27,12 @@
         </header>
         
         <main>
-            <h3>アカウント登録画面</h3>
+            <h3>アカウント更新画面</h3>
             <form method="post" action="regist_confirm.php" class="nyuuryoku"> 
                     <ul>
                         <li>
                             <p><label>名前（姓）</label>
-                                <input type="text" name="family_name" size="20">
+                                <input type="text" name="family_name" size="20" value="">
                             </p>
                         </li>
                         
@@ -157,7 +156,7 @@
                             </p>
                         </li>
                     </ul>
-            
+                 
                     <div class="button_ichi">
                         <input class="button" type="submit" value="確認する">
                     </div>
@@ -167,7 +166,5 @@
         <footer>
             Copyright D.I.worksI D.I. blog is the one which provides A to Z about programming
         </footer>
-    
     </body>
-
 </html>

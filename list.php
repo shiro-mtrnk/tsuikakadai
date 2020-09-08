@@ -31,14 +31,14 @@
                 <tr>
                     <td>ID</td><td>名前（姓）</td><td>名前（名）</td><td>カナ（姓）</td><td>カナ（名）</td>
                     <td>メールアドレス</td><td>パスワード</td><td>性別</td><td>アカウント権限</td>
-                    <td>削除フラグ</td><td>登録日時</td><td>更新日時</td><td>操作</td>
+                    <td>削除フラグ</td><td>登録日時</td><td>更新日時</td><td colspan="2">操作</td>
                 </tr>
                 
                 <?php
                     
                     mb_internal_encoding("utf8");
                     $pdo = new PDO("mysql:dbname=tsuikakadai;host=localhost;","root","root");
-                    $stmt = $pdo->query("select * from kadai1");
+                    $stmt = $pdo->query("select * from kadai1 order by id desc");
                         
                     foreach($stmt as $row){
                         
@@ -50,17 +50,45 @@
                             echo "<td>".$row['last_name_kana']."</td>";
                             echo "<td>".$row['mail']."</td>";
                             echo "<td>".$row['password']."</td>";
-                            echo "<td>".$row['gender']."</td>";
-                            echo "<td>".$row['authority']."</td>";
-                            echo "<td>".$row['delete_flag']."</td>";
-                            echo "<td>".$row['registered_time']."</td>";
-                            echo "<td>".$row['update_time']."</td>";
-                            echo "<td>"."更新"."</td>";
-                            echo "<td>"."削除"."</td>";
+                            echo "<td>";
+                                if($row['gender'] == 0){
+                                    echo "男";
+                                }else{
+                                    echo "女";
+                                }
+                            "</td>";
+                            echo "<td>";
+                                if($row['authority'] == 0){
+                                    echo "一般";
+                                }else{
+                                    echo "管理者";
+                                }
+                            "</td>";
+                            echo "<td>";
+                                if($row['delete_flag'] == 0){
+                                    echo "有効";
+                                }else{
+                                    echo "無効";
+                                }
+                            "</td>";    
+                            echo "<td>".substr($row['registered_time'],0,10)."</td>";
+                            echo "<td>".substr($row['update_time'],0,10)."</td>";
+//                            表示されている年月日の頭に0がつく&「/」で区切られていない
+                            echo "<td>".
+                                        "<form action='update.php'>".
+                                            "<input class='button_list' type=submit value='更新'>".
+                                        "</form>".
+                                "</td>";
+                            echo "<td>".
+                                        "<form action='delete.php'>".
+                                            "<input class='button_list' type=submit value='削除'>".
+                                        "</form>".
+                                "</td>";
                         echo "</tr>";
                     }  
                 ?>
             </table>
+            <br>
             
             
         </main>
