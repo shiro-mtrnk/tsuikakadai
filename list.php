@@ -1,3 +1,5 @@
+<!--http://localhost/kadai1/20.09.09/list.php-->
+
 <!doctype html>
 <html lang="ja">
     <head>

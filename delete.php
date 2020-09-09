@@ -1,4 +1,4 @@
-<!--http://localhost/kadai1/20.09.08/delete.php-->
+<!--http://localhost/kadai1/20.09.09/delete.php-->
 
 <!doctype html>
 <html lang="ja">
@@ -27,8 +27,17 @@
         </header>
         
         <main>
-        
-        
+            <?php
+                mb_internal_encoding("utf8");
+                $pdo = new PDO("mysql:dbname=tsuikakadai;host=localhost;","root","root");
+                $stmt = $pdo->query("select * from kadai1");
+                
+                foreach($stmt as $row){
+                    echo "for($i = $row['id'];$i >=1;$i--){
+                        if()
+                    }"    
+                    
+                }
         </main>
         
         <footer>
