@@ -1,5 +1,5 @@
 
-<!--http://localhost/kadai1/20.09.09/regist.php-->
+<!--http://localhost/kadai1/20.09.10/regist.php-->
 
 <!doctype html>
 <html lang="ja">

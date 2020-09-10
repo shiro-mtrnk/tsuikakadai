@@ -1,4 +1,4 @@
-<!--http://localhost/kadai1/20.09.09/list.php-->
+<!--http://localhost/kadai1/20.09.10/list.php-->
 
 <!doctype html>
 <html lang="ja">
@@ -82,8 +82,9 @@
                                         "</form>".
                                 "</td>";
                             echo "<td>".
-                                        "<form action='delete.php'>".
+                                        "<form action='delete.php' method='post'>".
                                             "<input class='button_list' type=submit value='削除'>".
+//                                            "<input type='hidden' value=$row['id'] name=id>".
                                         "</form>".
                                 "</td>";
                         echo "</tr>";

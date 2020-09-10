@@ -1,4 +1,4 @@
-<!--http://localhost/kadai1/20.09.09/delete.php-->
+<!--http://localhost/kadai1/20.09.10/delete.php-->
 
 <!doctype html>
 <html lang="ja">
@@ -28,16 +28,16 @@
         
         <main>
             <?php
+//                echo $_POST['id'];
                 mb_internal_encoding("utf8");
                 $pdo = new PDO("mysql:dbname=tsuikakadai;host=localhost;","root","root");
-                $stmt = $pdo->query("select * from kadai1");
+                $stmt = $pdo->query("select * from kadai1   ");
+//                    渡ってきたidのみのデータを指定する
                 
-                foreach($stmt as $row){
-                    echo "for($i = $row['id'];$i >=1;$i--){
-                        if()
-                    }"    
-                    
+                while($row = $stmt->fetch()){
+                    echo $row['id'];
                 }
+            ?>
         </main>
         
         <footer>
