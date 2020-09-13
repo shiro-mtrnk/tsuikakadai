@@ -120,8 +120,20 @@
                 </ul>    
                  
                 <div class="button_ichi">
-                    <form action="regist.php" class="buton_2pL">
+                    <form action="regist.php"  method="post" class="buton_2pL">
                         <input class="button" type="submit" value="前に戻る">
+                        <input type="hidden" value="<?php echo $_POST['family_name']; ?>" name="family_name">
+                        <input type="hidden" value="<?php echo $_POST['last_name']; ?>" name="last_name">
+                        <input type="hidden" value="<?php echo $_POST['family_name_kana']; ?>" name="family_name_kana">
+                        <input type="hidden" value="<?php echo $_POST['last_name_kana']; ?>" name="last_name_kana">
+                        <input type="hidden" value="<?php echo $_POST['mail']; ?>" name="mail">
+                        <input type="hidden" value="<?php echo $_POST['password']; ?>" name="password">
+                        <input type="hidden" value="<?php echo $_POST['gender']; ?>" name="gender">
+                        <input type="hidden" value="<?php echo $_POST['postal_code']; ?>" name="postal_code">
+                        <input type="hidden" value="<?php echo $_POST['prefecture']; ?>" name="prefecture">
+                        <input type="hidden" value="<?php echo $_POST['address_1']; ?>" name="address_1">
+                        <input type="hidden" value="<?php echo $_POST['address_2']; ?>" name="address_2">
+                        <input type="hidden" value="<?php echo $_POST['authority']; ?>" name="authority">
                     </form>
                     
                     <form action="regist_complete.php" method="post" class="button_2pR" >

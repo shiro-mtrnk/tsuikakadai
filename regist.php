@@ -33,37 +33,37 @@
                     <ul>
                         <li>
                             <p><label>名前（姓）</label>
-                                <input type="text" name="family_name" size="20">
+                                <input type="text" name="family_name" size="20" value="<?php echo $_POST['family_name']; ?>">
                             </p>
                         </li>
                         
                         <li>    
                             <p><label>名前（名）</label>
-                                <input type="text" name="last_name" size="20">
+                                <input type="text" name="last_name" size="20" value="<?php echo $_POST['last_name']; ?>">
                             </p>
                         </li>
                         
                         <li>
                             <p><label>カナ（姓）</label>
-                                <input type="text" name="family_name_kana" size="20">
+                                <input type="text" name="family_name_kana" size="20" value="<?php echo $_POST['family_name_kana']; ?>">
                             </p>
                         </li>
                         
                         <li>
                             <p><label>カナ（名）</label>
-                                <input type="text" name="last_name_kana" size="20">
+                                <input type="text" name="last_name_kana" size="20" value="<?php echo $_POST['last_name_kana']; ?>">
                             </p>
                         </li>
                         
                         <li>    
                             <p><label>メールアドレス</label>
-                                <input type="text" name="mail" size="20">
+                                <input type="text" name="mail" size="20" value="<?php echo $_POST['mail']; ?>">
                             </p>
                         </li>
                         
                         <li>    
                             <p><label>パスワード</label>
-                                <input type="text" name="password" size="20">
+                                <input type="text" name="password" size="20" value="<?php echo $_POST['password']; ?>">
                             </p>
                         </li>
                         
@@ -77,14 +77,14 @@
                             
                         <li>
                             <p><label>郵便番号</label>
-                                <input type="text" name="postal_code" size="10">
+                                <input type="text" name="postal_code" size="10" value="<?php echo $_POST['postal_code']; ?>">
                             </p>
                         </li>
                         
                         <li>    
                             <p><label>住所（都道府県）</label>
                                 <select name="prefecture">
-                                    <option value="" selected></option>
+                                    <option value="<?php echo $_POST['prefecture']; ?>" selected><?php echo $_POST['prefecture']; ?></option>
                                     <option value="北海道">北海道</option>
                                     <option value="青森県">青森県</option>
                                     <option value="岩手県">岩手県</option>
@@ -138,19 +138,29 @@
                             
                         <li>
                             <p><label>住所（市区町村）</label>
-                                <input type="text" name="address_1" size="20">
+                                <input type="text" name="address_1" size="20" value="<?php echo $_POST['address_1']; ?>">
                             </p>
                         </li>    
                             
                         <li>
                             <p><label>住所（番地）</label>
-                                <input type="text" name="address_2" size="20">
+                                <input type="text" name="address_2" size="20" value="<?php echo $_POST['address_2']; ?>">
                             </p>
                         </li> 
                         
                         <li>
                             <p><label>アカウント権限</label>
                                 <select name="authority">
+                                    <option value="" selected>
+                                        <?php
+                                            if($_POST['authority'] == 0){
+                                                echo "一般";
+                                            }else{
+                                                echo "管理者";
+                                            }
+                                        ?>
+<!--                                        空の値も0扱いされてしまい、最初から値が存在してしまう-->
+                                    </option>
                                     <option value="0">一般</option>
                                     <option value="1">管理者</option>
                                 </select>
