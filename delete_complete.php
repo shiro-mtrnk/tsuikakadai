@@ -2,7 +2,7 @@
 <html lang="ja">
     <head>
         <meta charset="utf-8">
-        <title>アカウント削除確認画面</title>
+        <title>アカウント削除完了画面</title>
         <link rel="stylesheet" type="text/css" href="regist.css">
     </head>
     
@@ -25,12 +25,12 @@
         </header>
         
         <main>
-            <h3>アカウント削除確認画面</h3>
+            <h3>アカウント削除完了画面</h3>
             <?php
                 $id = $_POST['id'];
                 mb_internal_encoding("utf8");
                 $pdo = new PDO("mysql:dbname=tsuikakadai;host=localhost;","root","root");
-                $stmt = $pdo->query("select * from kadai1 where id = $id");
+                $pdo->exec("update kadai1 set delete_flag = 1 where id = $id");
             ?>
             
             <div class="complete">
@@ -38,7 +38,7 @@
                 <br>
                 <br>
                 <br>
-                本当に削除してよろしいですか？
+                削除完了しました
                 <br>
                 <br>
                 <br>
@@ -46,19 +46,9 @@
                 <br>
             </div>
             
-            <div class="button_ichi">
-                <form action="delete.php"  method="post" class="button_2pL">
-                    <input class="button" type="submit" value="前に戻る">
-                    <input type="hidden" value="<?php echo $_POST['id']; ?>" name="id">
-                </form>
-                
-                <form action="delete_complete.php" method="post" class="button_2pR">
-                    <input class="button" type="submit" value="削除する">
-                    <input type="hidden" value="<?php echo $_POST['id']; ?>" name="id">
-                </form>
-                
-                
-            </div>
+            <form action="list_tameshi.php" class="button_ichi">
+                <input class="button" type="submit" value="TOPページへ戻る">
+            </form>
         </main>
         
         <footer>

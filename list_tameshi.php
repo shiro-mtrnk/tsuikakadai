@@ -1,4 +1,4 @@
-<!--http://localhost/kadai1/20.09.11/list_tameshi.php-->
+<!--http://localhost/kadai1/20.09.15/list_tameshi.php-->
 
 <!doctype html>
 <html lang="ja">
@@ -76,9 +76,12 @@
                             <td><?php echo substr($row['registered_time'],0,10); ?></td>
                             <td><?php echo substr($row['update_time'],0,10); ?></td>
 <!--//                            表示されている年月日の頭に0がつく&「/」で区切られていない-->
+                            
+                            
                             <td>
                                 <form action="update.php" method="post">
                                     <input class='button_list' type=submit value='更新'>
+                                    <input type="hidden" value="<?php echo $row['id']; ?>" name="id">
                                 </form>
                             </td>
                             <td>

@@ -1,4 +1,4 @@
-<!--http://localhost/kadai1/20.09.11/delete.php-->
+<!--http://localhost/kadai1/20.09.15/delete.php-->
 
 <!doctype html>
 <html lang="ja">
@@ -29,7 +29,7 @@
         <main>
             <h3>アカウント削除確認画面</h3>
             <?php
-                $id = $_POST['id'] or $_POST['id2'];
+                $id = $_POST['id'];
                 mb_internal_encoding("utf8");
                 $pdo = new PDO("mysql:dbname=tsuikakadai;host=localhost;","root","root");
                 $stmt = $pdo->query("select * from kadai1 where id = $id");
@@ -37,7 +37,7 @@
             ?>
             <div class="sakujo">
                 <?php foreach($stmt as $row){ ?>
-                    <?php echo $row['family_name'].$_POST['family_name']."<br>"; ?>
+                    <?php echo $row['family_name']."<br>"; ?>
                     <?php echo $row['last_name']."<br>"; ?>
                     <?php echo $row['family_name_kana']."<br>"; ?>
                     <?php echo $row['last_name_kana']."<br>"; ?>
@@ -64,18 +64,6 @@
                 <form action="delete_confirm.php" method="post">
                     <input class="button" type="submit" value="確認する">
                     <input type="hidden" value="<?php echo $row['id']; ?>" name="id">
-                    <input type="hidden" value="<?php echo $row['family_name']; ?>" name="family_name">
-                    <input type="hidden" value="<?php echo $row['last_name']; ?>" name="last_name">
-                    <input type="hidden" value="<?php echo $row['family_name_kana']; ?>" name="family_name_kana">
-                    <input type="hidden" value="<?php echo $row['last_name_kana']; ?>" name="last_name_kana">
-                    <input type="hidden" value="<?php echo $row['mail']; ?>" name="mail">
-                    <input type="hidden" value="<?php echo $row['password']; ?>" name="password">
-                    <input type="hidden" value="<?php echo $row['gender']; ?>" name="gender">
-                    <input type="hidden" value="<?php echo $row['postal_code']; ?>" name="postal_code">
-                    <input type="hidden" value="<?php echo $row['prefecture']; ?>" name="prefecture">
-                    <input type="hidden" value="<?php echo $row['address_1']; ?>" name="address_1">
-                    <input type="hidden" value="<?php echo $row['address_2']; ?>" name="address_2">
-                    <input type="hidden" value="<?php echo $row['authority']; ?>" name="authority">
                 </form>
             </div>
         </main>

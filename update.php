@@ -1,4 +1,4 @@
-<!--http://localhost/kadai1/20.09.09/update.php-->
+<!--http://localhost/kadai1/20.09.015/update.php-->
 
 <!doctype html>
 <html lang="ja">
@@ -28,41 +28,48 @@
         
         <main>
             <h3>アカウント更新画面</h3>
-            <form method="post" action="regist_confirm.php" class="nyuuryoku"> 
+            <?php
+                $id = $_POST['id'];
+                mb_internal_encoding("utf8");
+                $pdo = new PDO("mysql:dbname=tsuikakadai;host=localhost;","root","root");
+                $stmt = $pdo->query("select * from kadai1 where id = $id");
+            ?>
+            <form method="post" action="update_confirm.php" class="nyuuryoku"> 
+                <?php foreach($stmt as $row){ ?>
                     <ul>
                         <li>
                             <p><label>名前（姓）</label>
-                                <input type="text" name="family_name" size="20" value="">
+                                <input type="text" name="family_name" size="20" value="<?php echo $row['family_name']; ?>">
                             </p>
                         </li>
                         
                         <li>    
                             <p><label>名前（名）</label>
-                                <input type="text" name="last_name" size="20">
+                                <input type="text" name="last_name" size="20" value="<?php echo $row['last_name']; ?>">
                             </p>
                         </li>
                         
                         <li>
                             <p><label>カナ（姓）</label>
-                                <input type="text" name="family_name_kana" size="20">
+                                <input type="text" name="family_name_kana" size="20" value="<?php echo $row['family_name_kana']; ?>">
                             </p>
                         </li>
                         
                         <li>
                             <p><label>カナ（名）</label>
-                                <input type="text" name="last_name_kana" size="20">
+                                <input type="text" name="last_name_kana" size="20" value="<?php echo $row['last_name_kana']; ?>">
                             </p>
                         </li>
                         
                         <li>    
                             <p><label>メールアドレス</label>
-                                <input type="text" name="mail" size="20">
+                                <input type="text" name="mail" size="20" value="<?php echo $row['mail']; ?>">
                             </p>
                         </li>
                         
                         <li>    
                             <p><label>パスワード</label>
-                                <input type="text" name="password" size="20">
+                                <input type="text" name="password" size="20" value="<?php echo $row['password']; ?>">
                             </p>
                         </li>
                         
@@ -76,7 +83,7 @@
                             
                         <li>
                             <p><label>郵便番号</label>
-                                <input type="text" name="postal_code" size="10">
+                                <input type="text" name="postal_code" size="10" value="<?php echo $row['postal_code']; ?>">
                             </p>
                         </li>
                         
@@ -137,13 +144,13 @@
                             
                         <li>
                             <p><label>住所（市区町村）</label>
-                                <input type="text" name="address_1" size="20">
+                                <input type="text" name="address_1" size="20" value="<?php echo $row['address_1']; ?>">
                             </p>
                         </li>    
                             
                         <li>
                             <p><label>住所（番地）</label>
-                                <input type="text" name="address_2" size="20">
+                                <input type="text" name="address_2" size="20" value="<?php echo $row['address_2']; ?>">
                             </p>
                         </li> 
                         
@@ -159,7 +166,9 @@
                  
                     <div class="button_ichi">
                         <input class="button" type="submit" value="確認する">
+                        <input type="hidden" value="<?php echo $_POST['id']; ?>" name="id">
                     </div>
+                <?php } ?>
             </form>
         </main>
         
