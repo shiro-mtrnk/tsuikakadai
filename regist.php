@@ -1,5 +1,5 @@
 
-<!--http://localhost/kadai1/20.09.15/regist.php-->
+<!--http://localhost/kadai1/20.09.16/regist.php-->
 
 <!doctype html>
 <html lang="ja">
@@ -69,9 +69,19 @@
                         
                         <li>    
                             <p><label>性別</label>
-                                <label class="seibetsu"><input type="radio" name="gender" value="0">男</label>
+                                <label class="seibetsu"><input type="radio" name="gender" value="0" 
+                                                               <?php if ($_POST['gender'] == 0){
+                                                                    echo checked;
+                                                                } ?> >
+                                    男
+                                </label>
         <!--                        数字に先に変換して表示されているもののみ男or女にする（逆も可能ではある）-->
-                                <label class="seibetsu"><input type="radio" name="gender" value="1">女</label>
+                                <label class="seibetsu"><input type="radio" name="gender" value="1" 
+                                                               <?php if ($_POST['gender'] == 1){
+                                                                    echo checked;
+                                                                } ?> >
+                                    女
+                                </label>
                             </p><br>
                         </li>    
                             

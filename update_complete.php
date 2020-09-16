@@ -27,6 +27,8 @@
         <main>
             <h3>アカウント更新完了画面</h3>
             <?php
+                date_default_timezone_set('Asia/Tokyo');
+                
                 $id = $_POST['id'];
                 $family_name = $_POST['family_name'];
                 $last_name = $_POST['last_name'];
@@ -40,11 +42,10 @@
                 $address_1 = $_POST['address_1'];
                 $address_2 = $_POST['address_2'];
                 $authority = $_POST['authority'];
-                
+                $update_time = date('Y-m-d H:i:s');
                 
                 mb_internal_encoding("utf8");
                 $pdo = new PDO("mysql:dbname=tsuikakadai;host=localhost;","root","root");
-                date_default_timezone_set('Asia/Tokyo');
             
                 $pdo->exec("update kadai1 set family_name = \"$family_name\" where id = $id");
                 $pdo->exec("update kadai1 set last_name = \"$last_name\" where id = $id");
@@ -58,7 +59,7 @@
                 $pdo->exec("update kadai1 set address_1 = \"$address_1\" where id = $id");
                 $pdo->exec("update kadai1 set address_2 = \"$address_2\" where id = $id");
                 $pdo->exec("update kadai1 set autority = \"$authority\" where id = $id");
-                $pdo->exec("update kadai1 set update_time = \"date('Y-m-d H:i:s')\" where id = $id");
+                $pdo->exec("update kadai1 set update_time = \"$update_time\" where id = $id");
              
             ?>
             
