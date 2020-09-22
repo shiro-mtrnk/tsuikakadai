@@ -67,7 +67,7 @@
                     <li>
                         <p><label>性別</label>
                             <?php
-
+                            
                             if($_POST['gender'] == 0){
                                 echo "男";
                             }else{

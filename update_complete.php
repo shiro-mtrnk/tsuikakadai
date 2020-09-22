@@ -37,7 +37,7 @@
                 $mail = $_POST['mail'];
                 $password = $_POST['password'];
                 $gender = $_POST['gender'];
-                $postal_code = $passwordo['postal_code'];
+                $postal_code = $_POST['postal_code'];
                 $prefecture = $_POST['prefecture'];
                 $address_1 = $_POST['address_1'];
                 $address_2 = $_POST['address_2'];

@@ -1,4 +1,4 @@
-<!--http://localhost/kadai1/20.09.015/update.php-->
+<!--http://localhost/kadai1/20.09.22/update.php-->
 
 <!doctype html>
 <html lang="ja">
@@ -75,9 +75,47 @@
                         
                         <li>    
                             <p><label>性別</label>
-                                <label class="seibetsu"><input type="radio" name="gender" value="0">男</label>
+                                <label class="seibetsu"><input type="radio" name="gender" value="0" 
+                                                               <?php
+                                                                    if(isset($_POST['gender'])){
+                                                                        if($_POST['gender'] == 0){
+                                                                            echo 'checked';
+                                                                        }else{
+                                                                            echo '';
+                                                                        }
+                                                                    }elseif(isset($row['gender'])){
+                                                                        if($row['gender'] == 0){
+                                                                            echo 'checked';
+                                                                        }else{
+                                                                            echo '';
+                                                                        }
+                                                                    }
+                                             
+                                             
+                                             
+                                             
+                                                                ?>
+                                                               >男
+                                </label>
         <!--                        数字に先に変換して表示されているもののみ男or女にする（逆も可能ではある）-->
-                                <label class="seibetsu"><input type="radio" name="gender" value="1">女</label>
+                                <label class="seibetsu"><input type="radio" name="gender" value="1"
+                                                               <?php
+                                                                    if(isset($_POST['gender'])){
+                                                                        if($_POST['gender'] == 1){
+                                                                            echo 'checked';
+                                                                        }else{
+                                                                            echo '';
+                                                                        }
+                                                                    }elseif(isset($row['gender'])){
+                                                                        if($row['gender'] == 1){
+                                                                            echo 'checked';
+                                                                        }else{
+                                                                            echo '';
+                                                                        }
+                                                                    }
+                                                                ?>
+                                                               >女
+                                </label>
                             </p><br>
                         </li>    
                             
@@ -90,54 +128,39 @@
                         <li>    
                             <p><label>住所（都道府県）</label>
                                 <select name="prefecture">
-                                    <option value="" selected></option>
-                                    <option value="北海道">北海道</option>
-                                    <option value="青森県">青森県</option>
-                                    <option value="岩手県">岩手県</option>
-                                    <option value="宮城県">宮城県</option>
-                                    <option value="秋田県">秋田県</option>
-                                    <option value="山形県">山形県</option>
-                                    <option value="福島県">福島県</option>
-                                    <option value="茨城県">茨城県</option>
-                                    <option value="栃木県">栃木県</option>
-                                    <option value="群馬県">群馬県</option>
-                                    <option value="埼玉県">埼玉県</option>
-                                    <option value="千葉県">千葉県</option>
-                                    <option value="東京都">東京都</option>
-                                    <option value="神奈川県">神奈川県</option>
-                                    <option value="新潟県">新潟県</option>
-                                    <option value="富山県">富山県</option>
-                                    <option value="石川県">石川県</option>
-                                    <option value="福井県">福井県</option>
-                                    <option value="山梨県">山梨県</option>
-                                    <option value="長野県">長野県</option>
-                                    <option value="岐阜県">岐阜県</option>
-                                    <option value="静岡県">静岡県</option>
-                                    <option value="愛知県">愛知県</option>
-                                    <option value="三重県">三重県</option>
-                                    <option value="滋賀県">滋賀県</option>
-                                    <option value="京都府">京都府</option>
-                                    <option value="大阪府">大阪府</option>
-                                    <option value="兵庫県">兵庫県</option>
-                                    <option value="奈良県">奈良県</option>
-                                    <option value="和歌山県">和歌山県</option>
-                                    <option value="鳥取県">鳥取県</option>
-                                    <option value="島根県">島根県</option>
-                                    <option value="岡山県">岡山県</option>
-                                    <option value="広島県">広島県</option>
-                                    <option value="山口県">山口県</option>
-                                    <option value="徳島県">徳島県</option>
-                                    <option value="香川県">香川県</option>
-                                    <option value="愛媛県">愛媛県</option>
-                                    <option value="高知県">高知県</option>
-                                    <option value="福岡県">福岡県</option>
-                                    <option value="佐賀県">佐賀県</option>
-                                    <option value="長崎県">長崎県</option>
-                                    <option value="熊本県">熊本県</option>
-                                    <option value="大分県">大分県</option>
-                                    <option value="宮崎県">宮崎県</option>
-                                    <option value="鹿児島県">鹿児島県</option>
-                                    <option value="沖縄県">沖縄県</option>
+                                    <?php
+                                        $japan = array('0'=>'','1'=>'北海道','2'=>'青森県','3'=>'岩手県','4'=>'宮城県',
+                                                       '5'=>'秋田県','6'=>'山形県','7'=>'福島県','8'=>'茨城県','9'=>'栃木県',
+                                                       '10'=>'群馬県','11'=>'埼玉県','12'=>'千葉県','13'=>'東京都','14'=>'神奈川県',
+                                                       '15'=>'新潟県','16'=>'富山県','17'=>'石川県','18'=>'福井県','19'=>'山梨県',
+                                                       '20'=>'長野県','21'=>'岐阜県','22'=>'静岡県','23'=>'愛知県','24'=>'三重県',
+                                                       '25'=>'滋賀県','26'=>'京都府','27'=>'大阪府','28'=>'兵庫県','29'=>'奈良県',
+                                                       '30'=>'和歌山県','31'=>'鳥取県','32'=>'島根県','33'=>'岡山県','34'=>'広島県',
+                                                       '35'=>'山口県','36'=>'徳島県','37'=>'香川県','38'=>'愛媛県','39'=>'高知県',
+                                                       '40'=>'福岡県','41'=>'佐賀県','42'=>'長崎県','43'=>'熊本県','44'=>'大分県',
+                                                       '45'=>'宮崎県','46'=>'鹿児島県','47'=>'沖縄県');
+                                                                         
+                                        for($i=0;$i<48;$i++){
+                                            if(isset($_POST['prefecture'])){
+                                                if($japan[$i] == $_POST['prefecture']){
+                                                    $org = 'selected';
+                                                }else{
+                                                    $org = '';
+                                                }
+                                                echo '<option value="'.$japan[$i].'"'.$org.'>'.$japan[$i].'</option>';
+                                            }elseif(isset($row['prefecture'])){
+                                                if($japan[$i] == $row['prefecture']){
+                                                    $org = 'selected';
+                                                }else{
+                                                    $org = '';
+                                                }
+                                                echo '<option value="'.$japan[$i].'"'.$org.'>'.$japan[$i].'</option>';
+                                            }else{
+                                                echo '<option value="'.$japan[$i].'">'.$japan[$i].'</option>';
+                                            }
+                                        }
+                                        
+                                    ?>
                                 </select>
                             </p>
                         </li>    
@@ -157,8 +180,29 @@
                         <li>
                             <p><label>アカウント権限</label>
                                 <select name="authority">
-                                    <option value="0">一般</option>
-                                    <option value="1">管理者</option>
+                                    <?php
+                                        $kengen = array('0'=>'一般','1'=>'管理者');
+                                    
+                                        for($a=0;$a<2;$a++){
+                                            if(isset($_POST['authority'])){
+                                                if($a == $_POST['authority']){
+                                                    $arg = 'selected';
+                                                }else{
+                                                    $arg = '';
+                                                }
+                                                echo '<option value="'.$a.'"'.$arg.'>'.$kengen[$a].'</option>';
+                                            }elseif(isset($row['authority'])){
+                                                if($a == $row['authority']){
+                                                    $arg = 'selected';
+                                                }else{
+                                                    $arg = '';
+                                                }
+                                                echo '<option value="'.$a.'"'.$arg.'>'.$kengen[$a].'</option>';
+                                            }else{
+                                                echo '<option value="'.$a.'">'.$kengen[$a].'</option>';
+                                            }
+                                        }                                    
+                                    ?>    
                                 </select>
                             </p>
                         </li>

@@ -1,4 +1,4 @@
-<!--http://localhost/kadai1/20.09.15/delete.php-->
+<!--http://localhost/kadai1/20.09.22/delete.php-->
 
 <!doctype html>
 <html lang="ja">
