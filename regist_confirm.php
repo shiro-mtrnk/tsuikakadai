@@ -32,37 +32,61 @@
                 <ul>
                     <li>
                         <p><label>名前（姓）</label>
-                            <?php echo $_POST['family_name']; ?>
+                            <?php if(empty($_POST['family_name'])){; ?>
+                                <div class="mae"><?php echo "前に戻って入力してください"; ?></div>
+                            <?php }else{; ?>
+                                <?php echo $_POST['family_name']; ?>
+                            <?php }; ?>
                         </p>
                     </li>    
                     
                     <li>
                         <p><label>名前（名）</label>
-                            <?php echo $_POST['last_name']; ?>
+                            <?php if(empty($_POST['last_name'])){; ?>
+                                <div class="mae"><?php echo "前に戻って入力してください"; ?></div>
+                            <?php }else{; ?>
+                                <?php echo $_POST['last_name']; ?>
+                            <?php }; ?>
                         </p>
                     </li> 
                     
                     <li>
                         <p><label>カナ（姓）</label>
-                            <?php echo $_POST['family_name_kana']; ?>
+                            <?php if(empty($_POST['family_name_kana'])){; ?>
+                                <div class="mae"><?php echo "前に戻って入力してください"; ?></div>
+                            <?php }else{; ?>
+                                <?php echo $_POST['family_name_kana']; ?>
+                            <?php }; ?>
                         </p>
                     </li>
                     
                     <li>
                         <p><label>カナ（名）</label>
-                            <?php echo $_POST['last_name_kana']; ?>
+                            <?php if(empty($_POST['last_name_kana'])){; ?>
+                                <div class="mae"><?php echo "前に戻って入力してください"; ?></div>
+                            <?php }else{; ?>
+                                <?php echo $_POST['last_name_kana']; ?>
+                            <?php }; ?>
                         </p>
                     </li>    
                     
                     <li>
                         <p><label>メールアドレス</label>
-                            <?php echo $_POST['mail']; ?>
+                            <?php if(empty($_POST['mail'])){; ?>
+                                <div class="mae"><?php echo "前に戻って入力してください"; ?></div>
+                            <?php }else{; ?>
+                                <?php echo $_POST['mail']; ?>
+                            <?php }; ?>
                         </p>
                     </li>
                     
                     <li>
                         <p><label>パスワード</label>
-                            <?php echo $_POST['password']; ?>
+                            <?php if(empty($_POST['password'])){; ?>
+                                <div class="mae"><?php echo "前に戻って入力してください"; ?></div>
+                            <?php }else{; ?>
+                                <?php echo $_POST['password']; ?>
+                            <?php }; ?>
                         </p>
                     </li>
                     
@@ -82,25 +106,41 @@
                     
                     <li>
                         <p><label>郵便番号</label>
-                            <?php echo $_POST['postal_code']; ?>
+                            <?php if(empty($_POST['postal_code'])){; ?>
+                                <div class="mae"><?php echo "前に戻って入力してください"; ?></div>
+                            <?php }else{; ?>
+                                <?php echo $_POST['postal_code']; ?>
+                            <?php }; ?>
                         </p>
                     </li>
                     
                     <li>
                         <p><label>住所（都道府県）</label>
-                            <?php echo $_POST['prefecture']; ?>
+                            <?php if(empty($_POST['prefecture'])){; ?>
+                                <div class="mae"><?php echo "前に戻って選択してください"; ?></div>
+                            <?php }else{; ?>
+                                <?php echo $_POST['prefecture']; ?>
+                            <?php }; ?>
                         </p>
                     </li>    
                     
                     <li>
                         <p><label>住所（市区町村）</label>
-                            <?php echo $_POST['address_1']; ?>
+                            <?php if(empty($_POST['address_1'])){; ?>
+                                <div class="mae"><?php echo "前に戻って入力してください"; ?></div>
+                            <?php }else{; ?>
+                                <?php echo $_POST['address_1']; ?>
+                            <?php }; ?>
                         </p>
                     </li>
                     
                     <li>
                         <p><label>住所（番地）</label>
-                            <?php echo $_POST['address_2']; ?>
+                            <?php if(empty($_POST['address_2'])){; ?>
+                                <div class="mae"><?php echo "前に戻って入力してください"; ?></div>
+                            <?php }else{; ?>
+                                <?php echo $_POST['address_2']; ?>
+                            <?php }; ?>
                         </p>
                     </li>
                     
@@ -137,7 +177,22 @@
                     </form>
                     
                     <form action="regist_complete.php" method="post" class="button_2pR" >
-                        <input class="button" type="submit" value="登録する">
+                        <?php
+                            if(empty($_POST['family_name']) or 
+                                empty($_POST['last_name']) or 
+                                empty($_POST['family_name_kana']) or 
+                                empty($_POST['last_name_kana']) or 
+                                empty($_POST['mail']) or 
+                                empty($_POST['password']) or 
+                                empty($_POST['postal_code']) or 
+                                empty($_POST['prefecture']) or 
+                                empty($_POST['address_1']) or 
+                                empty($_POST['address_2'])){
+                                    echo '';
+                                }else{
+                                    echo '<input class="button" value="登録する" type="submit">';
+                                }
+                        ?>
                         <input type="hidden" value="<?php echo $_POST['family_name']; ?>" name="family_name">
                         <input type="hidden" value="<?php echo $_POST['last_name']; ?>" name="last_name">
                         <input type="hidden" value="<?php echo $_POST['family_name_kana']; ?>" name="family_name_kana">
@@ -151,7 +206,7 @@
                         <input type="hidden" value="<?php echo $_POST['address_2']; ?>" name="address_2">
                         <input type="hidden" value="<?php echo $_POST['authority']; ?>" name="authority">
                     </form>
-                        
+                    
                 </div>
             </div>
         </main>

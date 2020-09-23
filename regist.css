@@ -60,6 +60,7 @@ h3{
 }
 
 .button{
+    text-align: center;
     margin-top: 20px;margin-bottom: 15px;
     padding: 5px 80px;
 }
@@ -83,4 +84,8 @@ footer{
     text-align: center;
     font-size: 30px;
     font-weight: bolder;
+}
+
+.mae{
+    color: red;
 }
