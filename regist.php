@@ -1,5 +1,5 @@
 
-<!--http://localhost/kadai1/20.09.23/regist.php-->
+<!--http://localhost/kadai1/20.09.24/regist.php-->
 
 <!doctype html>
 <html lang="ja">
@@ -29,60 +29,89 @@
         
         <main>
             <h3>アカウント登録画面</h3>
+            <script type="text/javascript">
+                document.addEventListener('DOMContentLoaded', function() {
+                    var targets1 = document.getElementsByClassName('hirakan');
+                    for(var i=0;i<targets1.length;i++){
+                        targets1[i].oninput = function{
+                            var alertelement = this.parentNode.getElementsByClassName('alertarea');
+                            if((this.value !='')&&(this.value.match(/[^\d\-]+/))){
+                                if(alertelement[0]){
+                                    alertelement[0].innerHTML = 'ひらがなor漢字で入力してください。';
+                                }
+                                this.style.boder = "2px solid red";
+                            }else{
+                                if(alertelement[0]){
+                                    alertelement[0].innerHTML = '';
+                                }
+                                this.style.boder = "apx solid black";
+                            }
+                        }
+                    }
+                }
+                );
+            </script>
+            
             <form method="post" action="regist_confirm.php" class="nyuuryoku"> 
                     <ul>
                         <li>
                             <p><label>名前（姓）</label>
-                                <input type="text" name="family_name" size="20" 
+                                <input class="hirakan" type="text" name="family_name" size="20" 
                                        value="<?php if(isset($_POST['family_name'])){
                                         echo $_POST['family_name'];
                                 } ?>">
+                                <span class="alertarea"></span>
                             </p>
                             
                         </li>
                         
                         <li>    
                             <p><label>名前（名）</label>
-                                <input type="text" name="last_name" size="20" 
+                                <input class="hirakan" type="text" name="last_name" size="20" 
                                        value="<?php if(isset($_POST['last_name'])){
                                         echo $_POST['last_name'];
                                 } ?>">
+                                <span class="alertarea"></span>
                             </p>
                         </li>
                         
                         <li>
                             <p><label>カナ（姓）</label>
-                                <input type="text" name="family_name_kana" size="20" 
+                                <input class="katakana" type="text" name="family_name_kana" size="20" 
                                        value="<?php if(isset($_POST['family_name_kana'])){
                                         echo $_POST['family_name_kana'];
                                 } ?>">
+                                <span class="alertarea"></span>
                             </p>
                         </li>
                         
                         <li>
                             <p><label>カナ（名）</label>
-                                <input type="text" name="last_name_kana" size="20" 
+                                <input class="katakana" type="text" name="last_name_kana" size="20" 
                                        value="<?php if(isset($_POST['last_name_kana'])){
                                         echo $_POST['last_name_kana'];
                                 } ?>">
+                                <span class="alertarea"></span>
                             </p>
                         </li>
                         
                         <li>    
                             <p><label>メールアドレス</label>
-                                <input type="text" name="mail" size="20" 
+                                <input class="alpha" type="text" name="mail" size="20" 
                                        value="<?php if(isset($_POST['mail'])){
                                         echo $_POST['mail'];
                                 } ?>">
+                                <span class="alertarea"></span>
                             </p>
                         </li>
                         
                         <li>    
                             <p><label>パスワード</label>
-                                <input type="text" name="password" size="20" 
+                                <input class="eisuu" type="text" name="password" size="20" 
                                        value="<?php if(isset($_POST['password'])){
                                         echo $_POST['password'];
                                 } ?>">
+                                <span class="alertarea"></span>
                             </p>
                         </li>
                         
@@ -112,10 +141,11 @@
                             
                         <li>
                             <p><label>郵便番号</label>
-                                <input type="text" name="postal_code" size="10" 
+                                <input class="suuji" type="text" name="postal_code" size="10" 
                                        value="<?php if(isset($_POST['postal_code'])){
                                         echo $_POST['postal_code'];
                                 } ?>">
+                                <span class="alertarea"></span>
                             </p>
                         </li>
                         
@@ -154,19 +184,21 @@
                             
                         <li>
                             <p><label>住所（市区町村）</label>
-                                <input type="text" name="address_1" size="20" 
+                                <input class="japanese" type="text" name="address_1" size="20" 
                                        value="<?php if(isset($_POST['address_1'])){
                                         echo $_POST['address_1'];
                                 } ?>">
+                                <span class="alertarea"></span>
                             </p>
                         </li>    
                             
                         <li>
                             <p><label>住所（番地）</label>
-                                <input type="text" name="address_2" size="20" 
+                                <input class="japanese" type="text" name="address_2" size="20" 
                                        value="<?php if(isset($_POST['address_2'])){
                                         echo $_POST['address_2'];
                                 } ?>">
+                                <span class="alertarea"></span>
                             </p>
                         </li> 
                         
@@ -175,7 +207,7 @@
                                 <select name="authority">
                                     <?php
                                         $kengen = array('0'=>'一般','1'=>'管理者');
-                                    
+                                        
                                         for($a=0;$a<2;$a++){
                                             if(isset($_POST['authority'])){
                                                 if($a == $_POST['authority']){
@@ -187,15 +219,7 @@
                                             }else{
                                                 echo '<option value="'.$a.'">'.$kengen[$a].'</option>';
                                             }
-                                        }
-                                    
-//                                        if(isset($_POST['authority'])){
-//                                            for($a=0;$a<2;$a++){
-//                                                echo '<option>'.$kengen.'</option>';
-//                                            }
-//                                        }else{
-//                                            echo '<option>' .$kengen.'</option>';
-//                                        }
+                                        }                                    
                                     ?>    
                                 </select>
                             </p>
