@@ -1,4 +1,4 @@
-<!--http://localhost/kadai1/20.09.24/list_tameshi.php-->
+<!--http://localhost/kadai1/20.09.25/list_tameshi.php-->
 
 <!doctype html>
 <html lang="ja">
@@ -32,7 +32,7 @@
             <table border="1" cellspacing="0" class="ichiran">
                 <tr>
                     <td>ID</td><td>名前（姓）</td><td>名前（名）</td><td>カナ（姓）</td><td>カナ（名）</td>
-                    <td>メールアドレス</td><td>パスワード</td><td>性別</td><td>アカウント権限</td>
+                    <td>メールアドレス</td><td>性別</td><td>アカウント権限</td>
                     <td>削除フラグ</td><td>登録日時</td><td>更新日時</td><td colspan="2">操作</td>
                 </tr>
                 
@@ -54,7 +54,6 @@
                             <td><?php echo $row['family_name_kana']; ?></td>
                             <td><?php echo $row['last_name_kana']; ?></td>
                             <td><?php echo $row['mail']; ?></td>
-                            <td><?php echo $row['password']; ?></td>
                             <td><?php if($row['gender'] == 0){ ?>
                                     <?php echo "男"; ?>
                                 <?php }else{ ?>

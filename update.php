@@ -1,4 +1,4 @@
-<!--http://localhost/kadai1/20.09.23/update.php-->
+<!--http://localhost/kadai1/20.09.25/update.php-->
 
 <!doctype html>
 <html lang="ja">
@@ -34,42 +34,91 @@
                 $pdo = new PDO("mysql:dbname=tsuikakadai;host=localhost;","root","root");
                 $stmt = $pdo->query("select * from kadai1 where id = $id");
             ?>
-            <form method="post" action="update_confirm.php" class="nyuuryoku"> 
+            <form method="post" action="update_confirm.php" class="nyuuryoku">
+                <script type="text/javascript" src="regist.js"></script>
                 <?php foreach($stmt as $row){ ?>
                     <ul>
                         <li>
                             <p><label>名前（姓）</label>
-                                <input type="text" name="family_name" size="20" value="<?php echo $row['family_name']; ?>">
+                                <input class="hirakan" type="text" name="family_name" size="20" 
+                                       value="<?php 
+                                                if(isset($_POST['family_name'])){
+                                                    echo $_POST['family_name'];
+                                                }elseif(isset($row['family_name'])){
+                                                    echo $row['family_name'];
+                                                }
+                                              ?>">
+                                <span class="alertarea"></span>
                             </p>
                         </li>
                         
                         <li>    
                             <p><label>名前（名）</label>
-                                <input type="text" name="last_name" size="20" value="<?php echo $row['last_name']; ?>">
+                                <input class="hirakan" type="text" name="last_name" size="20" 
+                                       value="<?php 
+                                                if(isset($_POST['last_name'])){
+                                                    echo $_POST['last_name'];
+                                                }elseif(isset($row['last_name'])){
+                                                    echo $row['last_name'];
+                                                }
+                                              ?>">
+                                <span class="alertarea"></span>
                             </p>
                         </li>
                         
                         <li>
                             <p><label>カナ（姓）</label>
-                                <input type="text" name="family_name_kana" size="20" value="<?php echo $row['family_name_kana']; ?>">
+                                <input class="katakana" type="text" name="family_name_kana" size="20" 
+                                       value="<?php 
+                                                if(isset($_POST['family_name_kana'])){
+                                                    echo $_POST['family_name_kana'];
+                                                }elseif(isset($row['family_name_kana'])){
+                                                    echo $row['family_name_kana'];
+                                                }
+                                              ?>">
+                                <span class="alertarea"></span>
                             </p>
                         </li>
                         
                         <li>
                             <p><label>カナ（名）</label>
-                                <input type="text" name="last_name_kana" size="20" value="<?php echo $row['last_name_kana']; ?>">
+                                <input class="katakana" type="text" name="last_name_kana" size="20" 
+                                       value="<?php 
+                                                if(isset($_POST['last_name_kana'])){
+                                                    echo $_POST['last_name_kana'];
+                                                }elseif(isset($row['last_name_kana'])){
+                                                    echo $row['last_name_kana'];
+                                                }
+                                              ?>">
+                                <span class="alertarea"></span>
                             </p>
                         </li>
                         
                         <li>    
                             <p><label>メールアドレス</label>
-                                <input type="text" name="mail" size="20" value="<?php echo $row['mail']; ?>">
+                                <input class="alpha" type="text" name="mail" size="20" 
+                                       value="<?php 
+                                                if(isset($_POST['mail'])){
+                                                    echo $_POST['mail'];
+                                                }elseif(isset($row['mail'])){
+                                                    echo $row['mail'];
+                                                }
+                                              ?>">
+                                <span class="alertarea"></span>
                             </p>
                         </li>
                         
                         <li>    
                             <p><label>パスワード</label>
-                                <input type="text" name="password" size="20" value="<?php echo $row['password']; ?>">
+                                <input class="eisuu" type="text" name="password" size="20" 
+                                       value="<?php
+                                                if(isset($_POST['password'])){
+                                                    echo $_POST['password'];
+                                                }elseif(isset($row['password'])){
+                                                    echo "●●●●●●●●●●";
+                                                }
+                                              ?>">
+                                <span class="alertarea"></span>
                             </p>
                         </li>
                         
@@ -121,7 +170,15 @@
                             
                         <li>
                             <p><label>郵便番号</label>
-                                <input type="text" name="postal_code" size="10" value="<?php echo $row['postal_code']; ?>">
+                                <input class="suuji" type="text" name="postal_code" size="10" 
+                                       value="<?php 
+                                                if(isset($_POST['postal_code'])){
+                                                    echo $_POST['postal_code'];
+                                                }elseif(isset($row['postal_code'])){
+                                                    echo $row['postal_code'];
+                                                }
+                                              ?>">
+                                <span class="alertarea"></span>
                             </p>
                         </li>
                         
@@ -167,13 +224,29 @@
                             
                         <li>
                             <p><label>住所（市区町村）</label>
-                                <input type="text" name="address_1" size="20" value="<?php echo $row['address_1']; ?>">
+                                <input class="japanese" type="text" name="address_1" size="20" 
+                                       value="<?php 
+                                                if(isset($_POST['address_1'])){
+                                                    echo $_POST['address_1'];
+                                                }elseif(isset($row['address_1'])){
+                                                    echo $row['address_1'];
+                                                }
+                                              ?>">
+                                <span class="alertarea"></span>
                             </p>
                         </li>    
                             
                         <li>
                             <p><label>住所（番地）</label>
-                                <input type="text" name="address_2" size="20" value="<?php echo $row['address_2']; ?>">
+                                <input class="japanese" type="text" name="address_2" size="20" 
+                                       value="<?php 
+                                                if(isset($_POST['address_2'])){
+                                                    echo $_POST['address_2'];
+                                                }elseif(isset($row['address_2'])){
+                                                    echo $row['address_2'];
+                                                }
+                                              ?>">
+                                <span class="alertarea"></span>
                             </p>
                         </li> 
                         

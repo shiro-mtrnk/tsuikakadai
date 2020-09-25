@@ -49,7 +49,7 @@
                         <div class="koumoku"><label>名前（姓）</label>
                             <?php if(empty($_POST['family_name'])){; ?>
                                 <div class="mae"><?php echo "前に戻って入力してください"; ?></div>
-                            <?php }elseif($limit_name <= $family_name_length){; ?>
+                            <?php }elseif($limit_name < $family_name_length){; ?>
                                 <div class="mae"><?php echo "入力文字数は10文字までです"; ?></div>
                             <?php }else{; ?>
                                 <?php echo $_POST['family_name']; ?>
@@ -62,7 +62,7 @@
                         <div class="koumoku"><label>名前（名）</label>
                             <?php if(empty($_POST['last_name'])){; ?>
                                 <div class="mae"><?php echo "前に戻って入力してください"; ?></div>
-                            <?php }elseif($limit_name <= $last_name_length){; ?>
+                            <?php }elseif($limit_name < $last_name_length){; ?>
                                 <div class="mae"><?php echo "入力文字数は10文字までです"; ?></div>                        
                             <?php }else{; ?>
                                 <?php echo $_POST['last_name']; ?>
@@ -74,7 +74,7 @@
                         <div class="koumoku"><label>カナ（姓）</label>
                             <?php if(empty($_POST['family_name_kana'])){; ?>
                                 <div class="mae"><?php echo "前に戻って入力してください"; ?></div>
-                            <?php }elseif($limit_name <= $family_name_kana_length){; ?>
+                            <?php }elseif($limit_name < $family_name_kana_length){; ?>
                                 <div class="mae"><?php echo "入力文字数は10文字までです"; ?></div>                        
                             <?php }else{; ?>
                                 <?php echo $_POST['family_name_kana']; ?>
@@ -86,7 +86,7 @@
                         <div class="koumoku"><label>カナ（名）</label>
                             <?php if(empty($_POST['last_name_kana'])){; ?>
                                 <div class="mae"><?php echo "前に戻って入力してください"; ?></div>
-                            <?php }elseif($limit_name <= $last_name_kana_length){; ?>
+                            <?php }elseif($limit_name < $last_name_kana_length){; ?>
                                 <div class="mae"><?php echo "入力文字数は10文字までです"; ?></div>
                             <?php }else{; ?>
                                 <?php echo $_POST['last_name_kana']; ?>
@@ -98,7 +98,7 @@
                         <div class="koumoku"><label>メールアドレス</label>
                             <?php if(empty($_POST['mail'])){; ?>
                                 <div class="mae"><?php echo "前に戻って入力してください"; ?></div>
-                            <?php }elseif($limit_mail <= $mail_length){; ?>
+                            <?php }elseif($limit_mail < $mail_length){; ?>
                                 <div class="mae"><?php echo "入力文字数は100文字までです"; ?></div>
                             <?php }else{; ?>
                                 <?php echo $_POST['mail']; ?>
@@ -110,10 +110,14 @@
                         <div class="koumoku"><label>パスワード</label>
                             <?php if(empty($_POST['password'])){; ?>
                                 <div class="mae"><?php echo "前に戻って入力してください"; ?></div>
-                            <?php }elseif($limit_name <= $password_length){; ?>
+                            <?php }elseif($limit_name < $password_length){; ?>
                                 <div class="mae"><?php echo "入力文字数は10文字までです"; ?></div>                          
                             <?php }else{; ?>
-                                <?php echo $_POST['password']; ?>
+                                <?php 
+                                    if(isset($_POST['password'])){
+                                        echo "●●●●●●●●●●";
+                                    }
+                                ?>
                             <?php }; ?>
                         </div>
                     </li><br>
@@ -135,7 +139,7 @@
                         <div class="koumoku"><label>郵便番号</label>
                             <?php if(empty($_POST['postal_code'])){; ?>
                                 <div class="mae"><?php echo "前に戻って入力してください"; ?></div>
-                            <?php }elseif($limit_postal_code <= $postal_code_length){; ?>
+                            <?php }elseif($limit_postal_code < $postal_code_length){; ?>
                                 <div class="mae"><?php echo "入力文字数は7文字までです"; ?></div>
                             <?php }else{; ?>
                                 <?php echo $_POST['postal_code']; ?>
@@ -157,7 +161,7 @@
                         <div class="koumoku"><label>住所（市区町村）</label>
                             <?php if(empty($_POST['address_1'])){; ?>
                                 <div class="mae"><?php echo "前に戻って入力してください"; ?></div>
-                            <?php }elseif($limit_name <= $address_1_length){; ?>
+                            <?php }elseif($limit_name < $address_1_length){; ?>
                                 <div class="mae"><?php echo "入力文字数は10文字までです"; ?></div>
                             <?php }else{; ?>
                                 <?php echo $_POST['address_1']; ?>
@@ -169,7 +173,7 @@
                         <div class="koumoku"><label>住所（番地）</label>
                             <?php if(empty($_POST['address_2'])){; ?>
                                 <div class="mae"><?php echo "前に戻って入力してください"; ?></div>
-                            <?php }elseif($limit_mail <= $address_2_length){; ?>
+                            <?php }elseif($limit_mail < $address_2_length){; ?>
                                 <div class="mae"><?php echo "入力文字数は100文字までです"; ?></div>
                             <?php }else{; ?>
                                 <?php echo $_POST['address_2']; ?>
@@ -222,6 +226,16 @@
                                 empty($_POST['address_1']) or 
                                 empty($_POST['address_2'])){
                                     echo '';
+                            }elseif($limit_name < $family_name_length or 
+                                    $limit_name < $last_name_length or 
+                                    $limit_name < $family_name_kana_length or 
+                                    $limit_name < $last_name_kana_length or 
+                                    $limit_mail < $mail_length or 
+                                    $limit_name < $password_length or 
+                                    $limit_postal_code < $postal_code_length or 
+                                    $limit_name < $address_1_length or 
+                                    $limit_name < $address_2_length){
+                                echo '';
                             }else{
                                 echo '<input class="button" value="登録する" type="submit">';
                             }

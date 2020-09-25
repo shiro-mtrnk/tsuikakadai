@@ -1,4 +1,4 @@
-<!--http://localhost/kadai1/20.09.23/delete.php-->
+<!--http://localhost/kadai1/20.09.25/delete.php-->
 
 <!doctype html>
 <html lang="ja">
@@ -42,7 +42,12 @@
                     <?php echo $row['family_name_kana']."<br>"; ?>
                     <?php echo $row['last_name_kana']."<br>"; ?>
                     <?php echo $row['mail']."<br>"; ?>
-                    <?php echo $row['password']."<br>"; ?>
+                    <?php 
+                        if(isset($row['password'])){
+                            echo "●●●●●●●●●●";
+                        }
+                    ?>
+                    <br>
                     <?php if($row['gender'] == 0){ ?>
                                 <?php echo "男"; ?>
                             <?php }else{ ?>

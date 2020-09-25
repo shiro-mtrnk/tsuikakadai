@@ -1,5 +1,5 @@
 
-<!--http://localhost/kadai1/20.09.24/regist.php-->
+<!--http://localhost/kadai1/20.09.25/regist.php-->
 
 <!doctype html>
 <html lang="ja">
@@ -29,34 +29,13 @@
         
         <main>
             <h3>アカウント登録画面</h3>
-            <script type="text/javascript">
-                document.addEventListener('DOMContentLoaded', function() {
-                    var targets1 = document.getElementsByClassName('hirakan');
-                    for(var i=0;i<targets1.length;i++){
-                        targets1[i].oninput = function{
-                            var alertelement = this.parentNode.getElementsByClassName('alertarea');
-                            if((this.value !='')&&(this.value.match(/[^\d\-]+/))){
-                                if(alertelement[0]){
-                                    alertelement[0].innerHTML = 'ひらがなor漢字で入力してください。';
-                                }
-                                this.style.boder = "2px solid red";
-                            }else{
-                                if(alertelement[0]){
-                                    alertelement[0].innerHTML = '';
-                                }
-                                this.style.boder = "apx solid black";
-                            }
-                        }
-                    }
-                }
-                );
-            </script>
+            <script type="text/javascript" src="regist.js"></script>
             
             <form method="post" action="regist_confirm.php" class="nyuuryoku"> 
                     <ul>
                         <li>
                             <p><label>名前（姓）</label>
-                                <input class="hirakan" type="text" name="family_name" size="20" 
+                                <input class="hirakan" type="text" name="family_name" size="20"
                                        value="<?php if(isset($_POST['family_name'])){
                                         echo $_POST['family_name'];
                                 } ?>">
