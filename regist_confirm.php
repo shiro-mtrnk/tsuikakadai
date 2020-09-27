@@ -35,15 +35,15 @@
                             $limit_name = 10;
                             $limit_mail = 100;
                             $limit_postal_code = 7;
-                            $family_name_length = strlen($_POST['family_name']);
-                            $last_name_length = strlen($_POST['last_name']);
-                            $family_name_kana_length = strlen($_POST['family_name_kana']);
-                            $last_name_kana_length = strlen($_POST['last_name_kana']);
-                            $mail_length = strlen($_POST['mail']);
-                            $password_length = strlen($_POST['password']);
-                            $postal_code_length = strlen($_POST['postal_code']);
-                            $address_1_length = strlen($_POST['address_1']);
-                            $address_2_length = strlen($_POST['address_2']);
+                            $family_name_length = mb_strlen($_POST['family_name']);
+                            $last_name_length = mb_strlen($_POST['last_name']);
+                            $family_name_kana_length = mb_strlen($_POST['family_name_kana']);
+                            $last_name_kana_length = mb_strlen($_POST['last_name_kana']);
+                            $mail_length = mb_strlen($_POST['mail']);
+                            $password_length = mb_strlen($_POST['password']);
+                            $postal_code_length = mb_strlen($_POST['postal_code']);
+                            $address_1_length = mb_strlen($_POST['address_1']);
+                            $address_2_length = mb_strlen($_POST['address_2']);
                         ?>
                         
                         <div class="koumoku"><label>名前（姓）</label>

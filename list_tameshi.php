@@ -1,4 +1,4 @@
-<!--http://localhost/kadai1/20.09.25/list_tameshi.php-->
+<!--http://localhost/kadai1/20.09.27/list_tameshi.php-->
 
 <!doctype html>
 <html lang="ja">

@@ -1,5 +1,5 @@
 
-<!--http://localhost/kadai1/20.09.25/regist.php-->
+<!--http://localhost/kadai1/20.09.27/regist.php-->
 
 <!doctype html>
 <html lang="ja">
@@ -35,7 +35,7 @@
                     <ul>
                         <li>
                             <p><label>名前（姓）</label>
-                                <input class="hirakan" type="text" name="family_name" size="20"
+                                <input class="hirakan" type="text" name="family_name" size="20" maxlength="10"　required
                                        value="<?php if(isset($_POST['family_name'])){
                                         echo $_POST['family_name'];
                                 } ?>">
