@@ -44,23 +44,17 @@
                 $authority = $_POST['authority'];
                 $update_time = date('Y-m-d H:i:s');
                 
+                
                 mb_internal_encoding("utf8");
                 $pdo = new PDO("mysql:dbname=tsuikakadai;host=localhost;","root","root");
-            
-                $pdo->exec("update kadai1 set family_name = \"$family_name\" where id = $id");
-                $pdo->exec("update kadai1 set last_name = \"$last_name\" where id = $id");
-                $pdo->exec("update kadai1 set family_name_kana = \"$family_name_kana\" where id = $id");
-                $pdo->exec("update kadai1 set last_name_kana = \"$last_name_kana\" where id = $id");
-                $pdo->exec("update kadai1 set mail = \"$mail\" where id = $id");
-                $pdo->exec("update kadai1 set password = \"$password\" where id = $id");
-                $pdo->exec("update kadai1 set gender = \"$gender\" where id = $id");
-                $pdo->exec("update kadai1 set postal_code = \"$postal_code\" where id = $id");
-                $pdo->exec("update kadai1 set prefecture = \"$prefecture\" where id = $id");
-                $pdo->exec("update kadai1 set address_1 = \"$address_1\" where id = $id");
-                $pdo->exec("update kadai1 set address_2 = \"$address_2\" where id = $id");
-                $pdo->exec("update kadai1 set autority = \"$authority\" where id = $id");
-                $pdo->exec("update kadai1 set update_time = \"$update_time\" where id = $id");
-             
+                
+                $sql = "update kadai1 set family_name = :family_name,last_name = :last_name,family_name_kana = :family_name_kana,last_name_kana = :last_name_kana,mail = :mail,password = :password,gender = :gender,postal_code = :postal_code,prefecture = :prefecture,address_1 = :address_1,address_2 = :address_2,authority = :authority,update_time = :update_time where id = $id";
+                
+                $stmt = $pdo->prepare($sql);
+                
+                $params = array(':family_name' =>$family_name,':last_name' =>$last_name,':family_name_kana' =>$family_name_kana,':last_name_kana' =>$last_name_kana,':mail' =>$mail,':password' =>$password,':gender' =>$gender,':postal_code' =>$postal_code,':prefecture' =>$prefecture,':address_1' =>$address_1,':address_2' =>$address_2,':authority' =>$authority,'update_time' =>$update_time);
+                $stmt->execute($params);
+                
             ?>
             
             <div class="complete">

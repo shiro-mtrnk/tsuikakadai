@@ -28,9 +28,16 @@
             <h3>アカウント削除完了画面</h3>
             <?php
                 $id = $_POST['id'];
+                $update_time = date('Y-m-d H:i:s');
                 mb_internal_encoding("utf8");
                 $pdo = new PDO("mysql:dbname=tsuikakadai;host=localhost;","root","root");
-                $pdo->exec("update kadai1 set delete_flag = 1 where id = $id");
+                
+                $sql = "update kadai1 set delete_flag = :delete_flag,update_time = :update_time where id = $id";
+                $stmt = $pdo->prepare($sql);
+                $params = array(':delete_flag' =>1,'update_time' =>$update_time);
+                $stmt->execute($params);
+                
+                
             ?>
             
             <div class="complete">

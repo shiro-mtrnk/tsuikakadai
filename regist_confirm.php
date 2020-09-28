@@ -115,7 +115,9 @@
                             <?php }else{; ?>
                                 <?php 
                                     if(isset($_POST['password'])){
-                                        echo "●●●●●●●●●●";
+                                        for($i=0;$i<$password_length;$i++){
+                                            echo "●";
+                                        }
                                     }
                                 ?>
                             <?php }; ?>
