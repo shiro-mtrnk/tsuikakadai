@@ -106,13 +106,14 @@
                     <li>
                         <div class="koumoku"><label>パスワード</label>
                             <?php if(empty($_POST['password'])){; ?>
-                                <div class="mae"><?php echo "前に戻って入力してください"; ?></div>
+                                <?php echo "変更なし"; ?>
                             <?php }elseif($limit_name < $password_length){; ?>
                                 <div class="mae"><?php echo "入力文字数は10文字までです"; ?></div>                          
                             <?php }else{; ?>
                                 <?php 
                                     if(isset($_POST['password'])){
-                                        echo "●●●●●●●●●●";
+                                        for($i=0;$i<$password_length;$i++)
+                                            echo "●";
                                     }
                                 ?>
                             <?php }; ?>
@@ -219,7 +220,6 @@
                                 empty($_POST['family_name_kana']) or 
                                 empty($_POST['last_name_kana']) or 
                                 empty($_POST['mail']) or 
-                                empty($_POST['password']) or 
                                 empty($_POST['postal_code']) or 
                                 empty($_POST['prefecture']) or 
                                 empty($_POST['address_1']) or 
@@ -245,7 +245,14 @@
                         <input type="hidden" value="<?php echo $_POST['family_name_kana']; ?>" name="family_name_kana">
                         <input type="hidden" value="<?php echo $_POST['last_name_kana']; ?>" name="last_name_kana">
                         <input type="hidden" value="<?php echo $_POST['mail']; ?>" name="mail">
-                        <input type="hidden" value="<?php echo $_POST['password']; ?>" name="password">
+                        <input type="hidden" 
+                               value="<?php if($_POST['password']){
+                                            echo $_POST['password'];
+                                        }else{
+                                            echo '';
+                                        }
+                                      ?>" 
+                               name="password">
                         <input type="hidden" value="<?php echo $_POST['gender']; ?>" name="gender">
                         <input type="hidden" value="<?php echo $_POST['postal_code']; ?>" name="postal_code">
                         <input type="hidden" value="<?php echo $_POST['prefecture']; ?>" name="prefecture">

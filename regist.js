@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-//半角英数指定(対象:パスワード)
+//半角英数指定(対象:登録パスワード)
 document.addEventListener('DOMContentLoaded', function() {
     var targets1 = document.getElementsByClassName('eisuu');
     for(var i=0;i<targets1.length;i++){
@@ -127,6 +127,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 });
+
 
 
 //エラーチェックを出力

@@ -1,4 +1,4 @@
-<!--http://localhost/kadai1/20.09.27/update.php-->
+<!--http://localhost/kadai1/20.09.29/update.php-->
 
 <!doctype html>
 <html lang="ja">
@@ -111,11 +111,12 @@
                         <li>    
                             <p><label>パスワード</label>
                                 <input class="eisuu" type="text" name="password" size="20" 
+                                       placeholder="※更新希望時のみ入力"
                                        value="<?php
                                                 if(isset($_POST['password'])){
                                                     echo $_POST['password'];
                                                 }elseif(isset($row['password'])){
-                                                    echo "●●●●●●●●●●";
+                                                    echo "";
                                                 }
                                               ?>">
                                 <span class="alertarea"></span>

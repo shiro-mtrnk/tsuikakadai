@@ -35,7 +35,11 @@
                 $family_name_kana = $_POST['family_name_kana'];
                 $last_name_kana = $_POST['last_name_kana'];
                 $mail = $_POST['mail'];
-                $password = password_hash($_POST['password'],PASSWORD_DEFAULT);
+                if($_POST['password']){
+                    $password = password_hash($_POST['password'],PASSWORD_DEFAULT);
+                }else{
+                    '';
+                }
                 $gender = $_POST['gender'];
                 $postal_code = $_POST['postal_code'];
                 $prefecture = $_POST['prefecture'];
@@ -48,13 +52,21 @@
                 mb_internal_encoding("utf8");
                 $pdo = new PDO("mysql:dbname=tsuikakadai;host=localhost;","root","root");
                 
+                if($_POST['password']){
                 $sql = "update kadai1 set family_name = :family_name,last_name = :last_name,family_name_kana = :family_name_kana,last_name_kana = :last_name_kana,mail = :mail,password = :password,gender = :gender,postal_code = :postal_code,prefecture = :prefecture,address_1 = :address_1,address_2 = :address_2,authority = :authority,update_time = :update_time where id = $id";
+                }else{
+                $sql = "update kadai1 set family_name = :family_name,last_name = :last_name,family_name_kana = :family_name_kana,last_name_kana = :last_name_kana,mail = :mail,gender = :gender,postal_code = :postal_code,prefecture = :prefecture,address_1 = :address_1,address_2 = :address_2,authority = :authority,update_time = :update_time where id = $id";  
+                }
                 
                 $stmt = $pdo->prepare($sql);
                 
+                if($_POST['password']){
                 $params = array(':family_name' =>$family_name,':last_name' =>$last_name,':family_name_kana' =>$family_name_kana,':last_name_kana' =>$last_name_kana,':mail' =>$mail,':password' =>$password,':gender' =>$gender,':postal_code' =>$postal_code,':prefecture' =>$prefecture,':address_1' =>$address_1,':address_2' =>$address_2,':authority' =>$authority,'update_time' =>$update_time);
                 $stmt->execute($params);
-                
+                }else{
+                $params = array(':family_name' =>$family_name,':last_name' =>$last_name,':family_name_kana' =>$family_name_kana,':last_name_kana' =>$last_name_kana,':mail' =>$mail,':gender' =>$gender,':postal_code' =>$postal_code,':prefecture' =>$prefecture,':address_1' =>$address_1,':address_2' =>$address_2,':authority' =>$authority,'update_time' =>$update_time);
+                $stmt->execute($params);
+                }
             ?>
             
             <div class="complete">
