@@ -1,4 +1,4 @@
-<!--http://localhost/kadai1/20.09.29/update.php-->
+<!--http://localhost/kadai1/20.10.02/update.php-->
 
 <!doctype html>
 <html lang="ja">

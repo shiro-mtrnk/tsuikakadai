@@ -2,14 +2,10 @@
 
 mb_internal_encoding("utf8");
 
-$pdo = new PDO("mysql:dbname=tsuikakadai;host=localhost;","root","root");
-
 date_default_timezone_set('Asia/Tokyo');
 
-$pdo->exec("insert into kadai1(family_name,last_name,family_name_kana,last_name_kana,mail,password,gender,postal_code,prefecture,address_1,address_2,authority,delete_flag,registered_time,update_time)values('".$_POST['family_name']."','".$_POST['last_name']."','".$_POST['family_name_kana']."','".$_POST['last_name_kana']."','".$_POST['mail']."','".password_hash($_POST['password'],PASSWORD_DEFAULT)."','".$_POST['gender']."','".$_POST['postal_code']."','".$_POST['prefecture']."','".$_POST['address_1']."','".$_POST['address_2']."','".$_POST['authority']."',0,'".date('Y-m-d H:i:s')."','".date('Y-m-d H:i:s')."');");
-
-
 ?>
+
 
 
 <!doctype html>
@@ -45,7 +41,21 @@ $pdo->exec("insert into kadai1(family_name,last_name,family_name_kana,last_name_
                 <br>
                 <br>
                 <br>
-                登録完了しました
+                <?php
+                try{   
+                    $pdo = new PDO("mysql:dbname=tsuikakadai;host=localhost;","root","root");
+
+                    $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+                    $pdo ->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
+
+                    $pdo->exec("insert into kadai1(family_name,last_name,family_name_kana,last_name_kana,mail,password,gender,postal_code,prefecture,address_1,address_2,authority,delete_flag,registered_time,update_time)values('".$_POST['family_name']."','".$_POST['last_name']."','".$_POST['family_name_kana']."','".$_POST['last_name_kana']."','".$_POST['mail']."','".password_hash($_POST['password'],PASSWORD_DEFAULT)."','".$_POST['gender']."','".$_POST['postal_code']."','".$_POST['prefecture']."','".$_POST['address_1']."','".$_POST['address_2']."','".$_POST['authority']."',0,'".date('Y-m-d H:i:s')."','".date('Y-m-d H:i:s')."');");
+                    echo "登録完了しました。";
+                }catch(PDOException $e){
+                    echo $e->getMessage();
+                }
+                echo "エラーが発生しましたため、アカウント登録できません。"."<br>"."再度入力をお願いします。";
+                
+                ?>
                 <br>
                 <br>
                 <br>
