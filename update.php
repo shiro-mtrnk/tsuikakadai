@@ -22,6 +22,16 @@
                     <li>登録フォーム</li>
                     <li>問い合せ</li>
                     <li>その他</li>
+                    <li>
+                        <a href="http://localhost/kadai1/20.10.05/list_tameshi.php">
+                            アカウント一覧
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://localhost/kadai1/20.10.05/regist.php">
+                            アカウント登録
+                        </a>
+                    </li>
                 </ul>
             </div>
         </header>
@@ -40,7 +50,7 @@
                     <ul>
                         <li>
                             <p><label>名前（姓）</label>
-                                <input class="hirakan" type="text" name="family_name" size="20" 
+                                <input class="hirakan" type="text" name="family_name" size="20" maxlength="10"
                                        value="<?php 
                                                 if(isset($_POST['family_name'])){
                                                     echo $_POST['family_name'];
@@ -54,7 +64,7 @@
                         
                         <li>    
                             <p><label>名前（名）</label>
-                                <input class="hirakan" type="text" name="last_name" size="20" 
+                                <input class="hirakan" type="text" name="last_name" size="20" maxlength="10"
                                        value="<?php 
                                                 if(isset($_POST['last_name'])){
                                                     echo $_POST['last_name'];
@@ -68,7 +78,7 @@
                         
                         <li>
                             <p><label>カナ（姓）</label>
-                                <input class="katakana" type="text" name="family_name_kana" size="20" 
+                                <input class="katakana" type="text" name="family_name_kana" size="20" maxlength="10"
                                        value="<?php 
                                                 if(isset($_POST['family_name_kana'])){
                                                     echo $_POST['family_name_kana'];
@@ -82,7 +92,7 @@
                         
                         <li>
                             <p><label>カナ（名）</label>
-                                <input class="katakana" type="text" name="last_name_kana" size="20" 
+                                <input class="katakana" type="text" name="last_name_kana" size="20" maxlength="10"
                                        value="<?php 
                                                 if(isset($_POST['last_name_kana'])){
                                                     echo $_POST['last_name_kana'];
@@ -96,7 +106,7 @@
                         
                         <li>    
                             <p><label>メールアドレス</label>
-                                <input class="alpha" type="text" name="mail" size="20" 
+                                <input class="alpha" type="text" name="mail" size="20" maxlength="100"
                                        value="<?php 
                                                 if(isset($_POST['mail'])){
                                                     echo $_POST['mail'];
@@ -110,7 +120,7 @@
                         
                         <li>    
                             <p><label>パスワード</label>
-                                <input class="eisuu" type="text" name="password" size="20" 
+                                <input class="eisuu" type="text" name="password" size="20" maxlength="10"
                                        placeholder="※更新希望時のみ入力"
                                        value="<?php
                                                 if(isset($_POST['password'])){
@@ -171,7 +181,7 @@
                             
                         <li>
                             <p><label>郵便番号</label>
-                                <input class="suuji" type="text" name="postal_code" size="10" 
+                                <input class="suuji" type="text" name="postal_code" size="10" maxlength="7"
                                        value="<?php 
                                                 if(isset($_POST['postal_code'])){
                                                     echo $_POST['postal_code'];
@@ -225,7 +235,7 @@
                             
                         <li>
                             <p><label>住所（市区町村）</label>
-                                <input class="japanese" type="text" name="address_1" size="20" 
+                                <input class="japanese" type="text" name="address_1" size="20" maxlength="10"
                                        value="<?php 
                                                 if(isset($_POST['address_1'])){
                                                     echo $_POST['address_1'];
@@ -239,7 +249,7 @@
                             
                         <li>
                             <p><label>住所（番地）</label>
-                                <input class="japanese" type="text" name="address_2" size="20" 
+                                <input class="japanese" type="text" name="address_2" size="20" maxlength="100"
                                        value="<?php 
                                                 if(isset($_POST['address_2'])){
                                                     echo $_POST['address_2'];

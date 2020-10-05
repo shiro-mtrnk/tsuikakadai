@@ -18,6 +18,11 @@ body{
     float:left;list-style:none;padding-right:3%;color:white;font-size:17px;
 }
 
+.menu ul li a{
+    color: white;
+    text-decoration: none;
+}
+
 main{
     clear: both;
 }
