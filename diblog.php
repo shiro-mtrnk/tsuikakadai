@@ -1,4 +1,4 @@
-<!--http://localhost/kadai1/20.10.05/diblog.php-->
+<!--http://localhost/kadai1/20.10.06/diblog.php-->
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -22,12 +22,12 @@
                     <li>問い合せ</li>
                     <li class="kuu">その他</li>
                     <li>
-                        <a href="http://localhost/kadai1/20.10.05/list_tameshi.php">
+                        <a href="http://localhost/kadai1/20.10.06/list_tameshi.php">
                             アカウント一覧
                         </a>
                     </li>
                     <li>
-                        <a href="http://localhost/kadai1/20.10.05/regist.php">
+                        <a href="http://localhost/kadai1/20.10.06/regist.php">
                             アカウント登録
                         </a>
                     </li>

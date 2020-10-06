@@ -77,7 +77,7 @@
                 <?php } ?>
                
                 <form action="delete_confirm.php" method="post">
-                    <input class="button" type="submit" value="確認する">
+                    <input class="button" type="submit" value="削除する">
                     <input type="hidden" value="<?php echo $row['id']; ?>" name="id">
                 </form>
             </div>

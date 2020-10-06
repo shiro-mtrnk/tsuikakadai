@@ -22,12 +22,12 @@
                     <li>問い合せ</li>
                     <li>その他</li>
                     <li>
-                        <a href="http://localhost/kadai1/20.10.05/list_tameshi.php">
+                        <a href="http://localhost/kadai1/20.10.06/list_tameshi.php">
                             アカウント一覧
                         </a>
                     </li>
                     <li>
-                        <a href="http://localhost/kadai1/20.10.05/regist.php">
+                        <a href="http://localhost/kadai1/20.10.06/regist.php">
                             アカウント登録
                         </a>
                     </li>
@@ -148,10 +148,10 @@
                     
                     <li>
                         <div class="koumoku"><label>郵便番号</label>
-                            <?php if(empty($_POST['postal_code'])){; ?>
+                            <?php if(isset($_POST['postal_code'])){; ?>
                                 <div class="mae"><?php echo "前に戻って入力してください"; ?></div>
-                            <?php }elseif($limit_postal_code < $postal_code_length){; ?>
-                                <div class="mae"><?php echo "入力文字数は7文字までです"; ?></div>
+                            <?php }elseif($limit_postal_code != $postal_code_length or $_POST['postal_code'] == 0){; ?>
+                                <div class="mae"><?php echo "7文字で入力してください"; ?></div>
                             <?php }else{; ?>
                                 <?php echo $_POST['postal_code']; ?>
                             <?php }; ?>

@@ -293,7 +293,7 @@
                     </ul>
                  
                     <div class="button_ichi">
-                        <input class="button" type="submit" value="確認する">
+                        <input class="button" type="submit" value="更新する">
                         <input type="hidden" value="<?php echo $_POST['id']; ?>" name="id">
                     </div>
                 <?php } ?>

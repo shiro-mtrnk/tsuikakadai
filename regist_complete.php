@@ -31,12 +31,12 @@ date_default_timezone_set('Asia/Tokyo');
                     <li>問い合せ</li>
                     <li>その他</li>
                     <li>
-                        <a href="http://localhost/kadai1/20.10.05/list_tameshi.php">
+                        <a href="http://localhost/kadai1/20.10.06/list_tameshi.php">
                             アカウント一覧
                         </a>
                     </li>
                     <li>
-                        <a href="http://localhost/kadai1/20.10.05/regist.php">
+                        <a href="http://localhost/kadai1/20.10.06/regist.php">
                             アカウント登録
                         </a>
                     </li>
@@ -73,7 +73,7 @@ date_default_timezone_set('Asia/Tokyo');
                 <br>
             </div>
 
-            <form action="http://localhost/kadai1/20.10.05/diblog.php" class="button_ichi">
+            <form action="http://localhost/kadai1/20.10.06/diblog.php" class="button_ichi">
                 <input class="button" type="submit" value="TOPページへ戻る">
             </form>
         </main>
