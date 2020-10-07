@@ -21,12 +21,12 @@
                     <li>問い合せ</li>
                     <li>その他</li>
                     <li>
-                        <a href="http://localhost/kadai1/20.10.05/list_tameshi.php">
+                        <a href="list_tameshi.php">
                             アカウント一覧
                         </a>
                     </li>
                     <li>
-                        <a href="http://localhost/kadai1/20.10.05/regist.php">
+                        <a href="regist.php">
                             アカウント登録
                         </a>
                     </li>
@@ -60,23 +60,7 @@
                 
                 
                 mb_internal_encoding("utf8");
-                $pdo = new PDO("mysql:dbname=tsuikakadai;host=localhost;","root","root");
                 
-                if($_POST['password']){
-                $sql = "update kadai1 set family_name = :family_name,last_name = :last_name,family_name_kana = :family_name_kana,last_name_kana = :last_name_kana,mail = :mail,password = :password,gender = :gender,postal_code = :postal_code,prefecture = :prefecture,address_1 = :address_1,address_2 = :address_2,authority = :authority,update_time = :update_time where id = $id";
-                }else{
-                $sql = "update kadai1 set family_name = :family_name,last_name = :last_name,family_name_kana = :family_name_kana,last_name_kana = :last_name_kana,mail = :mail,gender = :gender,postal_code = :postal_code,prefecture = :prefecture,address_1 = :address_1,address_2 = :address_2,authority = :authority,update_time = :update_time where id = $id";  
-                }
-                
-                $stmt = $pdo->prepare($sql);
-                
-                if($_POST['password']){
-                $params = array(':family_name' =>$family_name,':last_name' =>$last_name,':family_name_kana' =>$family_name_kana,':last_name_kana' =>$last_name_kana,':mail' =>$mail,':password' =>$password,':gender' =>$gender,':postal_code' =>$postal_code,':prefecture' =>$prefecture,':address_1' =>$address_1,':address_2' =>$address_2,':authority' =>$authority,'update_time' =>$update_time);
-                $stmt->execute($params);
-                }else{
-                $params = array(':family_name' =>$family_name,':last_name' =>$last_name,':family_name_kana' =>$family_name_kana,':last_name_kana' =>$last_name_kana,':mail' =>$mail,':gender' =>$gender,':postal_code' =>$postal_code,':prefecture' =>$prefecture,':address_1' =>$address_1,':address_2' =>$address_2,':authority' =>$authority,'update_time' =>$update_time);
-                $stmt->execute($params);
-                }
             ?>
             
             <div class="complete">
@@ -84,7 +68,31 @@
                 <br>
                 <br>
                 <br>
-                更新完了しました
+                <?php
+                    try{
+                    $pdo = new PDO("mysql:dbname=tsuikakadai;host=localhost;","root","root");
+
+                    if($_POST['password']){
+                    $sql = "update kadai1 set family_name = :family_name,last_name = :last_name,family_name_kana = :family_name_kana,last_name_kana = :last_name_kana,mail = :mail,password = :password,gender = :gender,postal_code = :postal_code,prefecture = :prefecture,address_1 = :address_1,address_2 = :address_2,authority = :authority,update_time = :update_time where id = $id";
+                    }else{
+                    $sql = "update kadai1 set family_name = :family_name,last_name = :last_name,family_name_kana = :family_name_kana,last_name_kana = :last_name_kana,mail = :mail,gender = :gender,postal_code = :postal_code,prefecture = :prefecture,address_1 = :address_1,address_2 = :address_2,authority = :authority,update_time = :update_time where id = $id";  
+                    }
+
+                    $stmt = $pdo->prepare($sql);
+
+                    if($_POST['password']){
+                    $params = array(':family_name' =>$family_name,':last_name' =>$last_name,':family_name_kana' =>$family_name_kana,':last_name_kana' =>$last_name_kana,':mail' =>$mail,':password' =>$password,':gender' =>$gender,':postal_code' =>$postal_code,':prefecture' =>$prefecture,':address_1' =>$address_1,':address_2' =>$address_2,':authority' =>$authority,'update_time' =>$update_time);
+                    $stmt->execute($params);
+                    }else{
+                    $params = array(':family_name' =>$family_name,':last_name' =>$last_name,':family_name_kana' =>$family_name_kana,':last_name_kana' =>$last_name_kana,':mail' =>$mail,':gender' =>$gender,':postal_code' =>$postal_code,':prefecture' =>$prefecture,':address_1' =>$address_1,':address_2' =>$address_2,':authority' =>$authority,'update_time' =>$update_time);
+                    $stmt->execute($params);
+                    }
+                    echo "更新完了しました";
+                    }catch(PDOException $e){
+                        echo "エラーが発生したため、アカウントを更新できませんでした";
+                    }
+                ?>
+
                 <br>
                 <br>
                 <br>
@@ -92,7 +100,7 @@
                 <br>
             </div>
             
-            <form action="http://localhost/kadai1/20.10.05/diblog.php" class="button_ichi">
+            <form action="diblog.php" class="button_ichi">
                 <input class="button" type="submit" value="TOPページへ戻る">
             </form>
         </main>

@@ -1,4 +1,4 @@
-<!--http://localhost/kadai1/20.10.06/diblog.php-->
+<!--http://localhost/kadai1/kakobun/diblog.php-->
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -22,12 +22,12 @@
                     <li>問い合せ</li>
                     <li class="kuu">その他</li>
                     <li>
-                        <a href="http://localhost/kadai1/20.10.06/list_tameshi.php">
+                        <a href="list_tameshi.php">
                             アカウント一覧
                         </a>
                     </li>
                     <li>
-                        <a href="http://localhost/kadai1/20.10.06/regist.php">
+                        <a href="regist.php">
                             アカウント登録
                         </a>
                     </li>
@@ -65,7 +65,7 @@
                         </div>
                         <div class="box1">
                             <div class="gazou_3_10">
-                                <img src="pic5.jpg">
+                                <img src="../pic5.jpg">
                                 <p>アクティブラーニング</p>
                             </div>
                             <div class="gazou_3_10">

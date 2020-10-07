@@ -1,4 +1,4 @@
-<!--http://localhost/kadai1/20.10.02/update.php-->
+<!--http://localhost/kadai1/kakobun/update.php-->
 
 <!doctype html>
 <html lang="ja">
@@ -23,12 +23,12 @@
                     <li>問い合せ</li>
                     <li>その他</li>
                     <li>
-                        <a href="http://localhost/kadai1/20.10.05/list_tameshi.php">
+                        <a href="list_tameshi.php">
                             アカウント一覧
                         </a>
                     </li>
                     <li>
-                        <a href="http://localhost/kadai1/20.10.05/regist.php">
+                        <a href="regist.php">
                             アカウント登録
                         </a>
                     </li>
@@ -41,9 +41,14 @@
             <?php
                 $id = $_POST['id'];
                 mb_internal_encoding("utf8");
+            try{
                 $pdo = new PDO("mysql:dbname=tsuikakadai;host=localhost;","root","root");
                 $stmt = $pdo->query("select * from kadai1 where id = $id");
+            }catch(PDOException $e){
+                echo "エラーが発生したため更新画面に進めません。"."<br>"."恐れ入りますが、ページの再読み込みをお願いします。";
+            }
             ?>
+            
             <form method="post" action="update_confirm.php" class="nyuuryoku">
                 <script type="text/javascript" src="regist.js"></script>
                 <?php foreach($stmt as $row){ ?>

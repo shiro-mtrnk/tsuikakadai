@@ -22,12 +22,12 @@
                     <li>問い合せ</li>
                     <li>その他</li>
                     <li>
-                        <a href="http://localhost/kadai1/20.10.05/list_tameshi.php">
+                        <a href="list_tameshi.php">
                             アカウント一覧
                         </a>
                     </li>
                     <li>
-                        <a href="http://localhost/kadai1/20.10.05/regist.php">
+                        <a href="regist.php">
                             アカウント登録
                         </a>
                     </li>
@@ -41,14 +41,6 @@
                 $id = $_POST['id'];
                 $update_time = date('Y-m-d H:i:s');
                 mb_internal_encoding("utf8");
-                $pdo = new PDO("mysql:dbname=tsuikakadai;host=localhost;","root","root");
-                
-                $sql = "update kadai1 set delete_flag = :delete_flag,update_time = :update_time where id = $id";
-                $stmt = $pdo->prepare($sql);
-                $params = array(':delete_flag' =>1,'update_time' =>$update_time);
-                $stmt->execute($params);
-                
-                
             ?>
             
             <div class="complete">
@@ -56,7 +48,19 @@
                 <br>
                 <br>
                 <br>
-                削除完了しました
+                <?php
+                try{
+                $pdo = new PDO("mysql:dbname=tsuikakadai;host=localhost;","root","root");
+                
+                $sql = "update kadai1 set delete_flag = :delete_flag,update_time = :update_time where id = $id";
+                $stmt = $pdo->prepare($sql);
+                $params = array(':delete_flag' =>1,'update_time' =>$update_time);
+                $stmt->execute($params);
+                    echo "削除完了しました";
+                }catch(PDOException $e){
+                    echo "エラーが発生したためアカウントを削除できません。";
+                }
+                ?>
                 <br>
                 <br>
                 <br>
@@ -64,7 +68,7 @@
                 <br>
             </div>
             
-            <form action="http://localhost/kadai1/20.10.05/diblog.php" class="button_ichi">
+            <form action="diblog.php" class="button_ichi">
                 <input class="button" type="submit" value="TOPページへ戻る">
             </form>
         </main>

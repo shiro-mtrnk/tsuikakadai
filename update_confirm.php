@@ -21,12 +21,12 @@
                     <li>問い合せ</li>
                     <li>その他</li>
                     <li>
-                        <a href="http://localhost/kadai1/20.10.05/list_tameshi.php">
+                        <a href="list_tameshi.php">
                             アカウント一覧
                         </a>
                     </li>
                     <li>
-                        <a href="http://localhost/kadai1/20.10.05/regist.php">
+                        <a href="regist.php">
                             アカウント登録
                         </a>
                     </li>
@@ -146,10 +146,10 @@
                     
                     <li>
                         <div class="koumoku"><label>郵便番号</label>
-                            <?php if(empty($_POST['postal_code'])){; ?>
+                            <?php if(false === isset($_POST['postal_code']) or "" == $_POST['postal_code']){; ?>
                                 <div class="mae"><?php echo "前に戻って入力してください"; ?></div>
-                            <?php }elseif($limit_postal_code < $postal_code_length){; ?>
-                                <div class="mae"><?php echo "入力文字数は7文字までです"; ?></div>
+                            <?php }elseif($limit_postal_code != $postal_code_length){; ?>
+                                <div class="mae"><?php echo "7文字で入力してください"; ?></div>
                             <?php }else{; ?>
                                 <?php echo $_POST['postal_code']; ?>
                             <?php }; ?>
@@ -230,7 +230,7 @@
                                 empty($_POST['family_name_kana']) or 
                                 empty($_POST['last_name_kana']) or 
                                 empty($_POST['mail']) or 
-                                empty($_POST['postal_code']) or 
+                                false === isset($_POST['postal_code']) or "" == isset($_POST['postal_code']) or 
                                 empty($_POST['prefecture']) or 
                                 empty($_POST['address_1']) or 
                                 empty($_POST['address_2'])){
@@ -241,7 +241,7 @@
                                     $limit_name < $last_name_kana_length or 
                                     $limit_mail < $mail_length or 
                                     $limit_name < $password_length or 
-                                    $limit_postal_code < $postal_code_length or 
+                                    $limit_postal_code != $postal_code_length or 
                                     $limit_name < $address_1_length or 
                                     $limit_name < $address_2_length){
                                 echo '';

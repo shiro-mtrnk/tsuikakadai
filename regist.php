@@ -1,5 +1,5 @@
 
-<!--http://localhost/kadai1/20.10.05/regist.php-->
+<!--http://localhost/kadai1/kakobun/regist.php-->
 
 <!doctype html>
 <html lang="ja">
@@ -24,12 +24,12 @@
                     <li>問い合せ</li>
                     <li>その他</li>
                     <li>
-                        <a href="http://localhost/kadai1/20.10.06/list_tameshi.php">
+                        <a href="list_tameshi.php">
                             アカウント一覧
                         </a>
                     </li>
                     <li>
-                        <a href="http://localhost/kadai1/20.10.06/regist.php">
+                        <a href="regist.php">
                             アカウント登録
                         </a>
                     </li>

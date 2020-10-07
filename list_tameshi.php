@@ -1,4 +1,4 @@
-<!--http://localhost/kadai1/20.10.05/list_tameshi.php-->
+<!--http://localhost/kadai1/kakobun/list_tameshi.php-->
 
 <!doctype html>
 <html lang="ja">
@@ -23,12 +23,12 @@
                     <li>問い合せ</li>
                     <li>その他</li>
                     <li>
-                        <a href="http://localhost/kadai1/20.10.05/list_tameshi.php">
+                        <a href="list_tameshi.php">
                             アカウント一覧
                         </a>
                     </li>
                     <li>
-                        <a href="http://localhost/kadai1/20.10.05/regist.php">
+                        <a href="regist.php">
                             アカウント登録
                         </a>
                     </li>
@@ -89,13 +89,21 @@
                             
                             <td>
                                 <form action="update.php" method="post">
-                                    <input class='button_list' type=submit value='更新'>
+                                    <?php if($row['delete_flag'] == 1){; ?>
+                                        <?php echo "更新"; ?>
+                                    <?php }else{; ?>
+                                        <?php echo '<input class="button_list" type=submit value="更新">'; ?>
+                                    <?php }; ?>
                                     <input type="hidden" value="<?php echo $row['id']; ?>" name="id">
                                 </form>
                             </td>
                             <td>
                                 <form action="delete.php" method="post">
-                                    <input class="button_list" type=submit value="削除">
+                                    <?php if($row['delete_flag'] == 1){; ?>
+                                        <?php echo "削除"; ?>
+                                    <?php }else{; ?>
+                                        <?php echo '<input class="button_list" type=submit value="削除">'; ?>
+                                    <?php }; ?>
                                     <input type="hidden" value="<?php echo $row['id']; ?>" name=id>
                                 </form>
                             </td>
