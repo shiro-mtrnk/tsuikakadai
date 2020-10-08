@@ -1,3 +1,4 @@
+
 //ひらがなと漢字指定(対象:名前(姓)、名前(名))
 document.addEventListener('DOMContentLoaded', function() {
     var targets1 = document.getElementsByClassName('hirakan');

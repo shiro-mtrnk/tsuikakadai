@@ -1,3 +1,4 @@
+
 <!doctype html>
 
 <html lang="ja">
@@ -57,10 +58,10 @@
                 $params = array(':delete_flag' =>1,'update_time' =>$update_time);
                 $stmt->execute($params);
                     echo "削除完了しました";
-                }catch(PDOException $e){
-                    echo "エラーが発生したためアカウントを削除できません。";
+                }catch(PDOException $e){ ?>
+                    <font color="red"><?php echo "エラーが発生したためアカウントを削除できません。"."<br>"."恐れ入りますが再度削除登録をお願いします。";
                 }
-                ?>
+                ?>  </font>
                 <br>
                 <br>
                 <br>

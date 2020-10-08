@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="ja">
     <head>
@@ -47,13 +48,10 @@
                 <br>
                 <br>
                 <?php 
-                try{
+            try{
                     $pdo = new PDO("mysql:dbname=tsuikakadai;host=localhost;","root","root");
                     $stmt = $pdo->query("select * from kadai1 where id = $id");
                     echo "本当に削除してよろしいですか？";
-                }catch(PDOException $e){
-                    echo "エラーが発生したため削除画面に進めません。"."<br>"."恐れ入りますが、ページの再読み込みをお願いします。";
-                }
                 ?>
                 <br>
                 <br>
@@ -72,9 +70,12 @@
                     <input class="button" type="submit" value="削除する">
                     <input type="hidden" value="<?php echo $_POST['id']; ?>" name="id">
                 </form>
-                
-                
             </div>
+            <?php
+            }catch(PDOException $e){ ?>
+                <font color="red"><?php echo "エラーが発生したため削除画面に進めません。"."<br>"."恐れ入りますが、ページの再読み込みをお願いします。"."<br>"."<br>"."<br>"."<br>"."<br>";
+            }
+            ?>  </font>
         </main>
         
         <footer>

@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="ja">
     <head>
@@ -88,10 +89,10 @@
                     $stmt->execute($params);
                     }
                     echo "更新完了しました";
-                    }catch(PDOException $e){
-                        echo "エラーが発生したため、アカウントを更新できませんでした";
+                    }catch(PDOException $e){ ?>
+                        <font color="red"><?php echo "エラーが発生したため、アカウントを更新できませんでした。"."<br>"."恐れ入りますが、初めから操作をお願いします。";
                     }
-                ?>
+                ?>      </font>
 
                 <br>
                 <br>

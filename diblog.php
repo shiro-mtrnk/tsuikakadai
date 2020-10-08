@@ -1,4 +1,4 @@
-<!--http://localhost/kadai1/kakobun/diblog.php-->
+<!--http://localhost/kadai1/kansei/diblog.php-->
 
 <!DOCTYPE html>
 <html lang="ja">

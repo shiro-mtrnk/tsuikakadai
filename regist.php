@@ -1,5 +1,5 @@
 
-<!--http://localhost/kadai1/kakobun/regist.php-->
+<!--http://localhost/kadai1/kansei/regist.php-->
 
 <!doctype html>
 <html lang="ja">

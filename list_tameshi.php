@@ -1,4 +1,4 @@
-<!--http://localhost/kadai1/kakobun/list_tameshi.php-->
+<!--http://localhost/kadai1/kansei/list_tameshi.php-->
 
 <!doctype html>
 <html lang="ja">
@@ -40,20 +40,20 @@
             <h3>アカウント一覧画面</h3>
             <br>
             <table border="1" cellspacing="0" class="ichiran">
+            <?php
+                    
+                    mb_internal_encoding("utf8");
+            try{
+                    $pdo = new PDO("mysql:dbname=tsuikakadai;host=localhost;","root","root");
+                    $stmt = $pdo->query("select * from kadai1 order by id desc");
+                    
+                ?>
+                
                 <tr>
                     <td>ID</td><td>名前（姓）</td><td>名前（名）</td><td>カナ（姓）</td><td>カナ（名）</td>
                     <td>メールアドレス</td><td>性別</td><td>アカウント権限</td>
                     <td>削除フラグ</td><td>登録日時</td><td>更新日時</td><td colspan="2">操作</td>
                 </tr>
-                
-                <?php
-                    
-                    mb_internal_encoding("utf8");
-                    $pdo = new PDO("mysql:dbname=tsuikakadai;host=localhost;","root","root");
-                    $stmt = $pdo->query("select * from kadai1 order by id desc");
-                    
-                    
-                ?>
                 
                     <?php foreach($stmt as $row){ ?>
                         
@@ -109,6 +109,14 @@
                             </td>
                         </tr>
                     <?php } ?>  
+                <?php 
+            }catch(PDOException $e){ ?>
+                <br><br><br><br>
+                <div class="complete"><font color="red">
+                    <?php echo "エラーが発生したため表示できません。"."<br>"."恐れ入りますがページの再読み込みをお願いします。"."<br>"."<br>"."<br>"."<br>"."<br>";
+            }
+            ?>
+                </font></div>
             </table>
             <br>
             
