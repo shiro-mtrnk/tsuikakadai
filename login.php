@@ -40,18 +40,18 @@
             <script type="text/javascript" src="regist.js"></script>
             
             <h3>ログイン画面</h3>
-            <form class="login" action="diblog.php" method="post">
+            <form class="login" action="login_di.php" method="post">
             <ul>
                 <li>
                     <p><label>メールアドレス</label>
-                    <input class="alpha" type="text" name="mail" size="20" maxlength="100" required>
+                    <input class="alpha" type="text" name="mail_0" size="20" maxlength="100" required>
                     <span class="alertarea"></span>
                     </p>
                 </li>
                 
                 <li>
                     <p><label>パスワード</label>
-                    <input class="eisuu" type="password" name="password" size="20" required>
+                    <input class="eisuu" type="password" name="password_0" size="20" maxlength="10" required>
                     <span class="alertarea"></span>
                     </p>
                 </li>
