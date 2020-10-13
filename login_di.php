@@ -16,22 +16,25 @@
         }catch(PDOException $e){
             $msg = $e->getMessage();
         }
+        ?>
         
+        <?php
         $sql = "select * from kadai1 where mail = :mail";
         $stmt = $pdo->prepare($sql);
         $stmt->bindValue(':mail',$mail_0);
         $stmt->execute();
         $login = $stmt->fetch();
-        if(password_verify($_POST['password_0'],$login['password'])){
+        //$row~ASSOC を入れたらなぜかうまくいった
+        if($row = $stmt->fetch(PDO::FETCH_ASSOC) and password_verify($_POST['password_0'],$login['password'])){
             $_SESSION['id'] = $login['id'];
             $_SESSION['authority'] = $login['authority'];
-        ?>
-        
-        <script>
-            setTimeout("location.href='diblog.php',0");
-        </script>
-        
-        <?php
+            ?>
+            
+            <script>
+                setTimeout("location.href='diblog.php',0");
+            </script>
+            
+            <?php
         }else{
             $msg = 'メールアドレスまたはパスワードが間違っています。';
             $link = '<a href="login.php">戻る</a>';
@@ -39,7 +42,7 @@
         ?>
         
         <?php
-        if(password_verify($_POST['password_0'],$login['password'])){
+        if($row = $stmt->fetch(PDO::FETCH_ASSOC) and password_verify($_POST['password_0'],$login['password'])){
             echo "";
         }else{
         ?>
@@ -69,7 +72,8 @@
             </div>
         </header>
         <?php } ?>
-        <main>            
+        <main>
+            <br><br><br><br><br>
             <h1>
                 <?php 
                 if(isset($msg)){
@@ -79,6 +83,7 @@
                 }
                 ?>
             </h1>
+            <br><br><br><br><br>
             <?php 
                 if(isset($link)){
                     echo $link;
@@ -89,7 +94,7 @@
         </main>
         
         <?php 
-        if(password_verify($_POST['password_0'],$login['password'])){
+        if($row = $stmt->fetch(PDO::FETCH_ASSOC) and password_verify($_POST['password_0'],$login['password'])){
             echo "";
         }else{
         ?>
