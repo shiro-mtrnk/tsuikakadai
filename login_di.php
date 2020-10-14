@@ -24,10 +24,11 @@
         $stmt->bindValue(':mail',$mail_0);
         $stmt->execute();
         $login = $stmt->fetch();
-        //$row~ASSOC を入れたらなぜかうまくいった
-        if($row = $stmt->fetch(PDO::FETCH_ASSOC) and password_verify($_POST['password_0'],$login['password'])){
+        if($login != FALSE and password_verify($_POST['password_0'],$login['password'])){
+//        if($row = $stmt->fetch(PDO::FETCH_ASSOC) and password_verify($_POST['password_0'],$login['password'])){
             $_SESSION['id'] = $login['id'];
             $_SESSION['authority'] = $login['authority'];
+            session_destroy();
             ?>
             
             <script>
@@ -42,7 +43,7 @@
         ?>
         
         <?php
-        if($row = $stmt->fetch(PDO::FETCH_ASSOC) and password_verify($_POST['password_0'],$login['password'])){
+        if($login != FALSE and password_verify($_POST['password_0'],$login['password'])){
             echo "";
         }else{
         ?>
@@ -94,7 +95,7 @@
         </main>
         
         <?php 
-        if($row = $stmt->fetch(PDO::FETCH_ASSOC) and password_verify($_POST['password_0'],$login['password'])){
+        if($login !=FALSE and password_verify($_POST['password_0'],$login['password'])){
             echo "";
         }else{
         ?>
