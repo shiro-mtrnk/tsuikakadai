@@ -21,6 +21,7 @@
                     <li>登録フォーム</li>
                     <li>問い合せ</li>
                     <li class="kuu">その他</li>
+                    <?php if($_POST['authority_0'] == 1){ ?>
                     <li>
                         <a href="list_tameshi.php">
                             アカウント一覧
@@ -31,11 +32,13 @@
                             アカウント登録
                         </a>
                     </li>
+                    <?php }else{} ?>
                 </ul>
             </div>
         </header>
         
         <main>
+            <?php echo $_POST['authority_0']; ?>
                 <div class="left">
                     <h1>プログラミングに役立つ書籍</h1>
                     <p class="ookisa12">2017年1月15日</p>

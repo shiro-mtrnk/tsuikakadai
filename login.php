@@ -22,16 +22,6 @@
                     <li>登録フォーム</li>
                     <li>問い合せ</li>
                     <li>その他</li>
-                    <li>
-                        <a href="list_tameshi.php">
-                            アカウント一覧
-                        </a>
-                    </li>
-                    <li>
-                        <a href="regist.php">
-                            アカウント登録
-                        </a>
-                    </li>
                 </ul>
             </div>
         </header>
