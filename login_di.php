@@ -27,7 +27,7 @@
                 
                 <script>
                     var send_form = document.createElement("form");
-                    send_form.name = "login/di";
+                    send_form.name = "login_di";
                     send_form.action = "diblog.php";
                     send_form.method = "POST";
                     send_form.style.visibility = "hidden";
@@ -36,12 +36,12 @@
                     var fld1 = document.createElement("input");
                     fld1.name = "authority_0";
                     fld1.type = "hidden";
-                    fld1.value = "<?php $_SESSION['authority_0']; ?>";
+                    fld1.value = "<?php  echo $_SESSION['authority_0']; ?>";
                     send_form.appendChild(fld1);
                     
                     send_form.submit();
                     
-                    setTimeout("location.href='diblog.php',0");
+//                    setTimeout("location.href='diblog.php',0");
                 </script>
                 
                 <?php
