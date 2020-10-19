@@ -34,9 +34,9 @@
                     document.body.appendChild(send_form);
                     
                     var fld1 = document.createElement("input");
-                    fld1.name = "authority_0";
+                    fld1.name = "id_0";
                     fld1.type = "hidden";
-                    fld1.value = "<?php  echo $_SESSION['authority_0']; ?>";
+                    fld1.value = "<?php  echo $_SESSION['id_0']; ?>";
                     send_form.appendChild(fld1);
                     
                     send_form.submit();
@@ -62,16 +62,6 @@
                             <li>登録フォーム</li>
                             <li>問い合せ</li>
                             <li>その他</li>
-                            <li>
-                                <a href="list_tameshi.php">
-                                    アカウント一覧
-                                </a>
-                            </li>
-                            <li>
-                                <a href="regist.php">
-                                    アカウント登録
-                                </a>
-                            </li>
                         </ul>
                     </div>
                 </header>

@@ -5,7 +5,18 @@
     <head>
         <meta charset="UTF-8">
         <title>D.I.BLOG</title>
-        <link rel="stylesheet" type="text/css" href="diblog1.css"> 
+        <link rel="stylesheet" type="text/css" href="diblog1.css">
+        <?php 
+            mb_internal_encoding("utf8");
+            try{
+                $pdo = new PDO("mysql:dbname=tsuikakadai;host=localhost;","root","root");
+                $stmt = $pdo->query("select * from kadai1 where id = '".$_POST['id_0']."'");
+                foreach($stmt as $row){
+                }
+            }catch(PDOException $e){
+                echo "エラーが発生しました。";
+            }
+        ?>
     </head>
 
     <body>
@@ -21,7 +32,9 @@
                     <li>登録フォーム</li>
                     <li>問い合せ</li>
                     <li class="kuu">その他</li>
-                    <?php if($_POST['authority_0'] == 1){ ?>
+                    <?php 
+                        if(isset($row['authority'])){
+                            if($row['authority'] == 1){ ?>
                     <li>
                         <a href="list_tameshi.php">
                             アカウント一覧
@@ -32,13 +45,15 @@
                             アカウント登録
                         </a>
                     </li>
-                    <?php }else{} ?>
+                    <?php }else{
+                            }
+                        }
+                    ?>
                 </ul>
             </div>
         </header>
         
         <main>
-            <?php echo $_POST['authority_0']; ?>
                 <div class="left">
                     <h1>プログラミングに役立つ書籍</h1>
                     <p class="ookisa12">2017年1月15日</p>
