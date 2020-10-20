@@ -6,16 +6,9 @@
         <meta charset="UTF-8">
         <title>D.I.BLOG</title>
         <link rel="stylesheet" type="text/css" href="diblog1.css">
-        <?php 
+        <?php
             mb_internal_encoding("utf8");
-            try{
-                $pdo = new PDO("mysql:dbname=tsuikakadai;host=localhost;","root","root");
-                $stmt = $pdo->query("select * from kadai1 where id = '".$_POST['id_0']."'");
-                foreach($stmt as $row){
-                }
-            }catch(PDOException $e){
-                echo "エラーが発生しました。";
-            }
+            session_start();
         ?>
     </head>
 
@@ -24,6 +17,7 @@
             <div class="gazou_1">
                 <img src="../diblog_logo.jpg">
             </div>
+            
             <div class="menu">
                 <ul>
                     <li>トップ</li>
@@ -33,8 +27,8 @@
                     <li>問い合せ</li>
                     <li class="kuu">その他</li>
                     <?php 
-                        if(isset($row['authority'])){
-                            if($row['authority'] == 1){ ?>
+                        if(isset($_SESSION['authority_0'])){
+                            if($_SESSION['authority_0'] == 1){ ?>
                     <li>
                         <a href="list_tameshi.php">
                             アカウント一覧
@@ -54,7 +48,10 @@
         </header>
         
         <main>
-                <div class="left">
+        <?php 
+            try{
+        ?>
+            <div class="left">                    
                     <h1>プログラミングに役立つ書籍</h1>
                     <p class="ookisa12">2017年1月15日</p>
                     <p class="gazou_2">
@@ -100,8 +97,18 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="right">
+            </div>
+            <div class="right">
+                <span id="login">
+                <?php 
+                    if(isset($_SESSION['id_0'])){
+                        echo $_SESSION['family_name_0'].$_SESSION['last_name_0']."さんがログイン中です";
+                    }else{
+                        $msg = "ログインしてください";
+                    }
+                ?>
+                </span>
+                <div id="right_1">
                     <h4>人気の記事</h4>
                         <ul>
                             <li>PHPオススメ本</li>
@@ -124,7 +131,17 @@
                             <li>JavaScript</li>
                         </ul>
                 </div>
+            </div>
         </main>
+        <?php
+            }catch(PDOException $e){
+                if(isset($msg)){
+                $msg = $e->getMessage();                    
+                }else{
+                echo "エラーが発生しました。";                    
+                }
+            }
+        ?>   
         <footer>
             Copyright D.I.worksI D.I. blog is the one which provides A to Z about programming
         </footer>

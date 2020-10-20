@@ -5,7 +5,11 @@
     <head>
         <meta charset="utf-8">
         <title>アカウント一覧画面</title>
-        <link rel="stylesheet" type="text/css" href="regist.css">    
+        <link rel="stylesheet" type="text/css" href="regist.css">   
+        <?php
+            mb_internal_encoding("utf8");
+            session_start();
+        ?>
     </head>
     
     <body> 
@@ -22,6 +26,9 @@
                     <li>登録フォーム</li>
                     <li>問い合せ</li>
                     <li>その他</li>
+                    <?php 
+                        if(isset($_SESSION['authority_0'])){
+                            if($_SESSION['authority_0'] == 1){ ?>
                     <li>
                         <a href="list_tameshi.php">
                             アカウント一覧
@@ -32,6 +39,10 @@
                             アカウント登録
                         </a>
                     </li>
+                    <?php }else{
+                            }
+                        }
+                    ?>
                 </ul>
             </div>
         </header>
@@ -41,8 +52,6 @@
             <br>
             <table border="1" cellspacing="0" class="ichiran">
             <?php
-                    
-                    mb_internal_encoding("utf8");
             try{
                     $pdo = new PDO("mysql:dbname=tsuikakadai;host=localhost;","root","root");
                     $stmt = $pdo->query("select * from kadai1 order by id desc");

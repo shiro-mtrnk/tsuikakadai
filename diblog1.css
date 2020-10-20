@@ -5,6 +5,11 @@ body{
 
 .gazou_1 img{
     width:25%;margin:0px 0px 0px 10px;
+    display: inline-block;
+}
+
+#login{
+    float: right;
 }
 
 .menu{
@@ -66,7 +71,11 @@ h1{
 }
 
 .right{
-    float:left;width:27%;margin:35px 0px 0px 20px;
+    float:left;width:27%;margin:0px 0px 0px 20px;
+}
+
+.right #right_1{
+    margin-top: 52px; 
 }
 
 h4{

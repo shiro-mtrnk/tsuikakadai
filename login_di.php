@@ -21,29 +21,31 @@
             if($login != FALSE and password_verify($_POST['password_0'],$login['password'])){
 //        if($row = $stmt->fetch(PDO::FETCH_ASSOC) and password_verify($_POST['password_0'],$login['password'])){
                 $_SESSION['id_0'] = $login['id'];
+                $_SESSION['family_name_0'] = $login['family_name'];
+                $_SESSION['last_name_0'] = $login['last_name'];
                 $_SESSION['authority_0'] = $login['authority'];
-                session_destroy();
                 ?>
-                
+        
                 <script>
-                    var send_form = document.createElement("form");
-                    send_form.name = "login_di";
-                    send_form.action = "diblog.php";
-                    send_form.method = "POST";
-                    send_form.style.visibility = "hidden";
-                    document.body.appendChild(send_form);
+//                    var send_form = document.createElement("form");
+//                    send_form.name = "login_di";
+//                    send_form.action = "diblog.php";
+//                    send_form.method = "POST";
+//                    send_form.style.visibility = "hidden";
+//                    document.body.appendChild(send_form);
+//                    
+//                    var fld1 = document.createElement("input");
+//                    fld1.name = "id_0";
+//                    fld1.type = "hidden";
+//                    fld1.value = "<?php  echo $_SESSION['id_0']; ?>";
+//                    send_form.appendChild(fld1);
+//                    
+//                    send_form.submit();
                     
-                    var fld1 = document.createElement("input");
-                    fld1.name = "id_0";
-                    fld1.type = "hidden";
-                    fld1.value = "<?php  echo $_SESSION['id_0']; ?>";
-                    send_form.appendChild(fld1);
-                    
-                    send_form.submit();
-                    
-//                    setTimeout("location.href='diblog.php',0");
+                    setTimeout("location.href='diblog.php',0");
                 </script>
-                
+
+        
                 <?php
             }else{
                 $msg = 'メールアドレスまたはパスワードが間違っています。';

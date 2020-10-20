@@ -15,7 +15,11 @@ date_default_timezone_set('Asia/Tokyo');
      <head>
         <meta charset="utf-8">
         <title>アカウント登録完了画面</title>
-        <link rel="stylesheet" type="text/css" href="regist.css">    
+        <link rel="stylesheet" type="text/css" href="regist.css">  
+        <?php 
+            mb_mb_internal_encoding("utf8");
+            session_start();
+        ?>
     </head>
 
     <body>
@@ -31,6 +35,9 @@ date_default_timezone_set('Asia/Tokyo');
                     <li>登録フォーム</li>
                     <li>問い合せ</li>
                     <li>その他</li>
+                    <?php 
+                        if(isset($_SESSION['authority_0'])){
+                            if($_SESSION['authority_0'] == 1){ ?>
                     <li>
                         <a href="list_tameshi.php">
                             アカウント一覧
@@ -41,6 +48,10 @@ date_default_timezone_set('Asia/Tokyo');
                             アカウント登録
                         </a>
                     </li>
+                    <?php }else{
+                            }
+                        }
+                    ?>
                 </ul>
             </div>
         </header>
