@@ -1,4 +1,4 @@
-<!--http://localhost/kadai1/kadai2/diblog.php-->
+<!--http://localhost/kadai1/kadai3/diblog.php-->
 
 <!DOCTYPE html>
 <html lang="ja">

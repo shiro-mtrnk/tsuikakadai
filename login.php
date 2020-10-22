@@ -1,4 +1,4 @@
-<!--http://localhost/kadai1/kadai2/login.php-->
+<!--http://localhost/kadai1/kadai3/login.php-->
 
 <!doctype html>
 <html lang="ja">
