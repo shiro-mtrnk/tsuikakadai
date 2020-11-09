@@ -1,4 +1,4 @@
-<!--http://localhost/kadai1/kansei/update.php-->
+<!--http://localhost/kadai1/kadai3/update.php-->
 
 <!doctype html>
 <html lang="ja">
@@ -7,7 +7,7 @@
         <title>アカウント更新画面</title>
         <link rel="stylesheet" type="text/css" href="regist.css">
         <?php
-            mbmb_internal_encoding("utf8");
+            mb_internal_encoding("utf8");
             session_start();
         ?>
     </head>

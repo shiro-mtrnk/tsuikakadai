@@ -17,7 +17,6 @@ date_default_timezone_set('Asia/Tokyo');
         <title>アカウント登録完了画面</title>
         <link rel="stylesheet" type="text/css" href="regist.css">  
         <?php 
-            mb_mb_internal_encoding("utf8");
             session_start();
         ?>
     </head>
