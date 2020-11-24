@@ -1,4 +1,4 @@
-<!--http://localhost/kadai1/kansei/list_tameshi.php-->
+<!--http://localhost/kadai1/kadai5/list_tameshi.php-->
 
 <!doctype html>
 <html lang="ja">
@@ -50,7 +50,36 @@
         <main>
             <h3>アカウント一覧画面</h3>
             <br>
-            <table border="1" cellspacing="0" class="ichiran">
+            
+            <table border="1" cellspacing="0" id="kensaku" width="100%">
+                <tr>
+                    <td width="12%">名前（姓）</td><td width="38%"></td><td width="12%">名前（名）</td><td width="38%"></td>
+                </tr>
+                
+                <tr>
+                    <td>カナ（姓）</td><td></td><td>カナ（名）</td><td></td>
+                </tr>
+                
+                <tr>
+                    <td>メールアドレス</td><td></td><td>性別</td><td>選択なし　男　女</td>
+                </tr>
+                
+                <tr>
+                    <td>アカウント権限</td><td>一般　管理者</td><td colspan="2"></td>
+                </tr>
+                
+                <tr>
+                    <td colspan="3"></td><td>検索</td>
+                </tr>
+            </table>
+            
+            <div id="kensaku_button">検索</div>
+            
+            <br>
+            <br>
+            
+            
+            <table border="1" cellspacing="0" class="ichiran" width="100%">
             <?php
             try{
                     $pdo = new PDO("mysql:dbname=tsuikakadai;host=localhost;","root","root");
