@@ -154,11 +154,23 @@ footer{
 
 
 
+
+
+table.kensaku_koumoku td{
+    border: solid 1px #000;
+}
+
+
+
 #kensaku_button{
     float: right;
-    border-bottom: solid 2px black;
-    border-left: solid 2px black;
-    border-right: solid 2px black;
-    padding-left: 4%;
-    padding-right: 4%;
+    display: inline-block;
+    font-size     : 15pt;        /* 文字サイズ */
+    text-align    : center;      /* 文字位置   */
+    cursor        : pointer;     /* カーソル   */
+    padding       : 5px 65px;   /* 余白       */
+    background    : white;     /* 背景色     */
+    color         : black;     /* 文字色     */
+    line-height   : 1em;         /* 1行の高さ  */
+    border-top: none;
 }

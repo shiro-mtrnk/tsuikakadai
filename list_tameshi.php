@@ -51,29 +51,58 @@
             <h3>アカウント一覧画面</h3>
             <br>
             
-            <table border="1" cellspacing="0" id="kensaku" width="100%">
-                <tr>
-                    <td width="12%">名前（姓）</td><td width="38%"></td><td width="12%">名前（名）</td><td width="38%"></td>
-                </tr>
+            <form action="list_tameshi.php" method="post" name="kensaku">
+                <table border="1" cellspacing="0" id="kensaku" width="100%" class="kensaku_koumoku">
+                    <tr>
+                        <td width="12%">名前（姓）</td><td width="38%"><input type="text" name="family_name_k" maxlength="10" size="67%"></td>
+                        <td width="12%">名前（名）</td><td width="38%"><input type="text" name="last_name_k" maxlength="10" size="67%"></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>カナ（姓）</td><td><input type="text" name="family_name_kana_k" maxlength="10" size="67%"></td>
+                        <td>カナ（名）</td><td><input type="text" name="family_name_kana_k" maxlength="10" size="67%"></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>メールアドレス</td><td><input type="text" name="mail_k" maxlength="100" size="67%"></td>
+                        <td>性別</td>
+                        <td>
+                            <input type="radio" name="gender_k" value="2">選択なし
+                            <input type="radio" name="gender_k" value="0">男
+                            <input type="radio" name="gender_k" value="1">女
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>アカウント権限</td>
+                        <td>
+                            <select name="authority_k">
+                                <?php
+                                    $kengen = array('0'=>'一般','1'=>'管理者','2'=>'');
+                                    
+                                    for($i=0;$i<3;$i++){
+                                        if(isset($_POST["authority"])){
+                                            if($kengen[$i] == $_POST["authority"]){
+                                                $arg = 'selected';
+                                            }else{
+                                                $arg = '';
+                                            }
+                                            echo '<option value="'.$kengen[$i].'"'.$arg.'>'.$kengen[$i].'</option>';
+                                        }
+                                        else{
+                                            echo '<option value="'.$kengen[$i].'">'.$kengen[$i].'</option>';
+                                        }
+                                    }
+                                ?>
+                            </select>
+                        </td><td colspan="2"></td>
+                    </tr>
+                    
+                </table>
                 
-                <tr>
-                    <td>カナ（姓）</td><td></td><td>カナ（名）</td><td></td>
-                </tr>
+                <input type="submit" value="検索" id="kensaku_button" background-color="white">
                 
-                <tr>
-                    <td>メールアドレス</td><td></td><td>性別</td><td>選択なし　男　女</td>
-                </tr>
-                
-                <tr>
-                    <td>アカウント権限</td><td>一般　管理者</td><td colspan="2"></td>
-                </tr>
-                
-                <tr>
-                    <td colspan="3"></td><td>検索</td>
-                </tr>
-            </table>
-            
-            <div id="kensaku_button">検索</div>
+            </form>
             
             <br>
             <br>
@@ -83,7 +112,40 @@
             <?php
             try{
                     $pdo = new PDO("mysql:dbname=tsuikakadai;host=localhost;","root","root");
-                    $stmt = $pdo->query("select * from kadai1 order by id desc");
+                    
+                    if(isset($_POST["first_name_k"])){
+                        $first_name_k = htmlspecialchars($_POST["first_name_k"]);
+                        $first_name_k_value = $first_name_k;
+                    }else{
+                        $first_name_k = '';
+                        $first_name_k_value = '';
+                    }if(isset($_POST["last_name_k"])){
+                        $last_name_k = htmlspecialchars($_POST["last_name_k"]);
+                        $last_name_k_value = $last_name_k;
+                    }else{
+                        $last_name_k = '';
+                        $last_name_k_value = '';
+                    }if(isset($_POST["first_name_kana_k"])){
+                        $first_name_kana_k = htmlspecialchars($_POST["first_name_kana_k"]);
+                        $first_name_kana_k_value = $first_name_kana_k;
+                    }else{
+                        $first_name_kana_k = '';
+                        $first_name_kana_k_value = '';
+                    }if(isset($_POST["last_name_kana_k"])){
+                        $last_name_kana_k = htmlspecialchars($_POST["last_name_kana_k"]);
+                        $last_name_kana_k_value = $last_name_kana_k;
+                    }else{
+                        $last_name_kana_k = '';
+                        $last_name_kana_k_value = '';
+                    }if(isset($_POST["mail_k"])){
+                        $mail_k = htmlspecialchars($_POST["mail_k"]);
+                        $mail_k_value = $mail_k;
+                    }else{
+                        $mail_k = '';
+                        $mail_k_value = '';
+                    }
+                    
+                    $stmt = $pdo->query("select * from kadai1 LIKE '%$first_name_k%' or '%$last_name_k%' or '%$first_name_kana_k%' or '%$last_name_kana_k%' or '%$mail_k%' order by id desc");
                     
                 ?>
                 
