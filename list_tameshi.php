@@ -54,22 +54,53 @@
             <form action="list_tameshi.php" method="post" name="kensaku">
                 <table border="1" cellspacing="0" id="kensaku" width="100%" class="kensaku_koumoku">
                     <tr>
-                        <td width="12%">名前（姓）</td><td width="38%"><input type="text" name="family_name_k" maxlength="10" size="67%"></td>
-                        <td width="12%">名前（名）</td><td width="38%"><input type="text" name="last_name_k" maxlength="10" size="67%"></td>
+                        <td width="12%">名前（姓）</td>
+                        <td width="38%"><input type="text" name="family_name_k" maxlength="10" size="67%"></td>
+                        <td width="12%">名前（名）</td>
+                        <td width="38%"><input type="text" name="last_name_k" maxlength="10" size="67%"></td>
                     </tr>
                     
                     <tr>
-                        <td>カナ（姓）</td><td><input type="text" name="family_name_kana_k" maxlength="10" size="67%"></td>
-                        <td>カナ（名）</td><td><input type="text" name="family_name_kana_k" maxlength="10" size="67%"></td>
+                        <td>カナ（姓）</td>
+                        <td><input type="text" name="family_name_kana_k" maxlength="10" size="67%"></td>
+                        <td>カナ（名）</td>
+                        <td><input type="text" name="family_name_kana_k" maxlength="10" size="67%"></td>
                     </tr>
                     
                     <tr>
-                        <td>メールアドレス</td><td><input type="text" name="mail_k" maxlength="100" size="67%"></td>
+                        <td>メールアドレス</td>
+                        <td><input type="text" name="mail_k" maxlength="100" size="67%"></td>
                         <td>性別</td>
                         <td>
-                            <input type="radio" name="gender_k" value="2">選択なし
-                            <input type="radio" name="gender_k" value="0">男
-                            <input type="radio" name="gender_k" value="1">女
+                            <input type="radio" name="gender_k" value="2"
+                                   <?php
+                                        if(isset($_POST["gender_k"])){
+                                            if($_POST["gender_k"] == 2){
+                                                echo 'checked';
+                                            }
+                                        }else{
+                                            echo 'checked';
+                                        }
+                                    ?>
+                            >　選択なし
+                            <input type="radio" name="gender_k" value="0"
+                                   <?php 
+                                        if(isset($_POST["gender_k"])){
+                                            if($_POST["gender_k"] == 0){
+                                                echo 'checked';
+                                            }
+                                        }
+                                    ?>   
+                            >　男
+                            <input type="radio" name="gender_k" value="1"
+                                   <?php 
+                                        if(isset($_POST["gender_k"])){
+                                            if($_POST["gender_k"] == 1){
+                                                echo 'checked';
+                                            }
+                                        }
+                                    ?>
+                            >　女
                         </td>
                     </tr>
                     
@@ -81,15 +112,14 @@
                                     $kengen = array('0'=>'一般','1'=>'管理者','2'=>'');
                                     
                                     for($i=0;$i<3;$i++){
-                                        if(isset($_POST["authority"])){
-                                            if($kengen[$i] == $_POST["authority"]){
+                                        if(isset($_POST["authority_k"])){
+                                            if($kengen[$i] == $_POST["authority_k"]){
                                                 $arg = 'selected';
                                             }else{
                                                 $arg = '';
                                             }
                                             echo '<option value="'.$kengen[$i].'"'.$arg.'>'.$kengen[$i].'</option>';
-                                        }
-                                        else{
+                                        }else{
                                             echo '<option value="'.$kengen[$i].'">'.$kengen[$i].'</option>';
                                         }
                                     }
@@ -113,41 +143,68 @@
             try{
                     $pdo = new PDO("mysql:dbname=tsuikakadai;host=localhost;","root","root");
                     
-                    if(isset($_POST["first_name_k"])){
-                        $first_name_k = htmlspecialchars($_POST["first_name_k"]);
-                        $first_name_k_value = $first_name_k;
+                    if(isset($_POST["family_name_k"])){
+                        $family_name_k = htmlspecialchars($_POST["family_name_k"]);
                     }else{
-                        $first_name_k = '';
-                        $first_name_k_value = '';
-                    }if(isset($_POST["last_name_k"])){
-                        $last_name_k = htmlspecialchars($_POST["last_name_k"]);
-                        $last_name_k_value = $last_name_k;
-                    }else{
-                        $last_name_k = '';
-                        $last_name_k_value = '';
-                    }if(isset($_POST["first_name_kana_k"])){
-                        $first_name_kana_k = htmlspecialchars($_POST["first_name_kana_k"]);
-                        $first_name_kana_k_value = $first_name_kana_k;
-                    }else{
-                        $first_name_kana_k = '';
-                        $first_name_kana_k_value = '';
-                    }if(isset($_POST["last_name_kana_k"])){
-                        $last_name_kana_k = htmlspecialchars($_POST["last_name_kana_k"]);
-                        $last_name_kana_k_value = $last_name_kana_k;
-                    }else{
-                        $last_name_kana_k = '';
-                        $last_name_kana_k_value = '';
-                    }if(isset($_POST["mail_k"])){
-                        $mail_k = htmlspecialchars($_POST["mail_k"]);
-                        $mail_k_value = $mail_k;
-                    }else{
-                        $mail_k = '';
-                        $mail_k_value = '';
+                        $family_name_k = '';
+                    }
+//                if(isset($_POST["last_name_k"])){
+//                    $last_name_k = htmlspecialchars($_POST["last_name_k"]);
+//                }else{
+//                    $last_name_k = '';
+//                }
+//                if(isset($_POST["family_name_kana_k"])){
+//                    $family_name_kana_k = htmlspecialchars($_POST["family_name_kana_k"]);
+//                }else{
+//                    $family_name_kana_k = '';
+//                }
+//                if(isset($_POST["last_name_kana_k"])){
+//                    $last_name_kana_k = htmlspecialchars($_POST["last_name_kana_k"]);
+//                }else{
+//                    $last_name_kana_k = '';
+//                }
+//                if(isset($_POST["gender_k"])){
+//                    $gender_k = htmlspecialchars($_POST["gender_k"]);
+//                }else{
+//                    $gender_k = '';                        
+//                }
+//                if(isset($_POST["mail_k"])){
+//                    $mail_k = htmlspecialchars($_POST["mail_k"]);
+//                }else{
+//                    $mail_k = '';
+//                }
+//                if(isset($_POST["authority_k"])){
+//                    $authority_k = htmlspecialchars($_POST["authority_k"]);
+//                }else{
+//                    $authority_k = '';
+//                }
+//                    ↑次回関数化したい
+                
+                    
+                    $keywords = ['$family_name_k','$last_name_k','family_name_kana_k','last_name_kana_k','gender_k','mail_k','authority_k'];
+                    
+                    $keywordCondition = [];
+                    
+                    foreach($keywords as $keyword){
+                        $keywordCondition[] = 'name LIKE "%'.$keyword.'%"';
                     }
                     
-                    $stmt = $pdo->query("select * from kadai1 LIKE '%$first_name_k%' or '%$last_name_k%' or '%$first_name_kana_k%' or '%$last_name_kana_k%' or '%$mail_k%' order by id desc");
+//                    var_dump($keywordCondition);
+//                    変数の中身の確認用
                     
+                    $keywordCondition = implode(' AND ',$keywordCondition);
+                    
+                    
+                    
+                    
+                    
+                    
+                    $stmt = $pdo->query("select * from kadai1 '".$keywordCondition."' order by id desc");
+                    echo $keywordCondition;
                 ?>
+                
+                
+                <?php foreach($stmt as $row){ ?>
                 
                 <tr>
                     <td>ID</td><td>名前（姓）</td><td>名前（名）</td><td>カナ（姓）</td><td>カナ（名）</td>
@@ -155,7 +212,6 @@
                     <td>削除フラグ</td><td>登録日時</td><td>更新日時</td><td colspan="2">操作</td>
                 </tr>
                 
-                    <?php foreach($stmt as $row){ ?>
                         
                         <tr>
                             <td><?php echo $row['id']; ?></td>
@@ -208,8 +264,8 @@
                                 </form>
                             </td>
                         </tr>
-                    <?php } ?>  
-                <?php 
+                <?php }
+                
             }catch(PDOException $e){ ?>
                 <br><br><br><br>
                 <div class="complete"><font color="red">
