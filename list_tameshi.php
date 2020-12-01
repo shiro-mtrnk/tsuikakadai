@@ -64,7 +64,7 @@
                         <td>カナ（姓）</td>
                         <td><input type="text" name="family_name_kana_k" maxlength="10" size="67%"></td>
                         <td>カナ（名）</td>
-                        <td><input type="text" name="family_name_kana_k" maxlength="10" size="67%"></td>
+                        <td><input type="text" name="last_name_kana_k" maxlength="10" size="67%"></td>
                     </tr>
                     
                     <tr>
@@ -138,79 +138,88 @@
             <br>
             
             
-            <table border="1" cellspacing="0" class="ichiran" width="100%">
             <?php
             try{
-                    $pdo = new PDO("mysql:dbname=tsuikakadai;host=localhost;","root","root");
-                    
-                    if(isset($_POST["family_name_k"])){
-                        $family_name_k = htmlspecialchars($_POST["family_name_k"]);
-                    }else{
-                        $family_name_k = '';
-                    }
-//                if(isset($_POST["last_name_k"])){
-//                    $last_name_k = htmlspecialchars($_POST["last_name_k"]);
-//                }else{
-//                    $last_name_k = '';
-//                }
-//                if(isset($_POST["family_name_kana_k"])){
-//                    $family_name_kana_k = htmlspecialchars($_POST["family_name_kana_k"]);
-//                }else{
-//                    $family_name_kana_k = '';
-//                }
-//                if(isset($_POST["last_name_kana_k"])){
-//                    $last_name_kana_k = htmlspecialchars($_POST["last_name_kana_k"]);
-//                }else{
-//                    $last_name_kana_k = '';
-//                }
-//                if(isset($_POST["gender_k"])){
-//                    $gender_k = htmlspecialchars($_POST["gender_k"]);
-//                }else{
-//                    $gender_k = '';                        
-//                }
-//                if(isset($_POST["mail_k"])){
-//                    $mail_k = htmlspecialchars($_POST["mail_k"]);
-//                }else{
-//                    $mail_k = '';
-//                }
-//                if(isset($_POST["authority_k"])){
-//                    $authority_k = htmlspecialchars($_POST["authority_k"]);
-//                }else{
-//                    $authority_k = '';
-//                }
+                $pdo = new PDO("mysql:dbname=tsuikakadai;host=localhost;","root","root");
+                
+                if(isset($_POST["family_name_k"])){
+                    $family_name_k = htmlspecialchars($_POST["family_name_k"]);
+                }else{
+                    $family_name_k = '';
+                }
+                if(isset($_POST["last_name_k"])){
+                    $last_name_k = htmlspecialchars($_POST["last_name_k"]);
+                }else{
+                    $last_name_k = '';
+                }
+                if(isset($_POST["family_name_kana_k"])){
+                    $family_name_kana_k = htmlspecialchars($_POST["family_name_kana_k"]);
+                }else{
+                    $family_name_kana_k = '';
+                }
+                if(isset($_POST["last_name_kana_k"])){
+                    $last_name_kana_k = htmlspecialchars($_POST["last_name_kana_k"]);
+                }else{
+                    $last_name_kana_k = '';
+                }
+                if(isset($_POST["gender_k"])){
+                    $gender_k = htmlspecialchars($_POST["gender_k"]);
+                }else{
+                    $gender_k = '';                        
+                }
+                if(isset($_POST["mail_k"])){
+                    $mail_k = htmlspecialchars($_POST["mail_k"]);
+                }else{
+                    $mail_k = '';
+                }
+                if(isset($_POST["authority_k"])){
+                    $authority_k = htmlspecialchars($_POST["authority_k"]);
+                }else{
+                    $authority_k = '';
+                }
 //                    ↑次回関数化したい
                 
                     
-                    $keywords = ['$family_name_k','$last_name_k','family_name_kana_k','last_name_kana_k','gender_k','mail_k','authority_k'];
+                    $keywords = ["$family_name_k","$last_name_k","$family_name_kana_k","$last_name_kana_k","$gender_k","$mail_k","$authority_k"];
+                    
+                    $words = ["family_name","last_name","family_name_kana","last_name_kana","gender","mail","authority"];
                     
                     $keywordCondition = [];
                     
-                    foreach($keywords as $keyword){
-                        $keywordCondition[] = 'name LIKE "%'.$keyword.'%"';
+                    foreach(array_map(NULL,$words,$keywords) as [$word,$keyword]){
+                        $keywordCondition[] = $word.' like "%'.$keyword.'%"';
                     }
                     
 //                    var_dump($keywordCondition);
 //                    変数の中身の確認用
                     
-                    $keywordCondition = implode(' AND ',$keywordCondition);
+                    $keywordCondition = implode(' and ',$keywordCondition);
                     
                     
                     
                     
                     
                     
-                    $stmt = $pdo->query("select * from kadai1 '".$keywordCondition."' order by id desc");
+                    $stmt = $pdo->query("select * from kadai1 where '".$keywordCondition."' order by id desc");
+//                    $stmt = $pdo->query("select * from kadai1 where family_name like '".$family_name_k."' order by id desc");
                     echo $keywordCondition;
                 ?>
                 
                 
-                <?php foreach($stmt as $row){ ?>
+            <table border="1" cellspacing="0" class="ichiran" width="100%">
+                
                 
                 <tr>
                     <td>ID</td><td>名前（姓）</td><td>名前（名）</td><td>カナ（姓）</td><td>カナ（名）</td>
                     <td>メールアドレス</td><td>性別</td><td>アカウント権限</td>
                     <td>削除フラグ</td><td>登録日時</td><td>更新日時</td><td colspan="2">操作</td>
                 </tr>
+                
+                
+                <?php 
+                    foreach($stmt as $row){ 
+                ?>
+                
                 
                         
                         <tr>
