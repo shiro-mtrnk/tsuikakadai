@@ -197,12 +197,17 @@
                     
                     
                     
+//                    $sql = "select * from kadai1 where :keywordCondition order by id desc";
+//                    $stmt = $pdo->prepare($sql);
+//                    $params = array(':keywordCondition' => "$keywordCondition");
+//                    $stmt->execute($params);
                     
                     
-                    
-                    $stmt = $pdo->query("select * from kadai1 where '".$keywordCondition."' order by id desc");
+                    $stmt = $pdo->query("select * from kadai1 where ".$keywordCondition." order by id desc");
 //                    $stmt = $pdo->query("select * from kadai1 where family_name like '".$family_name_k."' order by id desc");
-                    echo $keywordCondition;
+//                    echo $keywordCondition;
+                    echo $stmt->rowCount();                
+                    echo $stmt->queryString;
                 ?>
                 
                 
