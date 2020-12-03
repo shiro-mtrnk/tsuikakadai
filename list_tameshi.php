@@ -109,7 +109,7 @@
                         <td>
                             <select name="authority_k">
                                 <?php
-                                    $kengen = array('0'=>'一般','1'=>'管理者','2'=>'');
+                                    $kengen = array('0'=>'','1'=>'一般','2'=>'管理者');
                                     
                                     for($i=0;$i<3;$i++){
                                         if(isset($_POST["authority_k"])){
@@ -163,7 +163,11 @@
                     $last_name_kana_k = '';
                 }
                 if(isset($_POST["gender_k"])){
+                    if($_POST["gender_k"] == 2){
+                        $gender_k = '';
+                    }else{
                     $gender_k = htmlspecialchars($_POST["gender_k"]);
+                    }
                 }else{
                     $gender_k = '';                        
                 }
@@ -173,7 +177,14 @@
                     $mail_k = '';
                 }
                 if(isset($_POST["authority_k"])){
-                    $authority_k = htmlspecialchars($_POST["authority_k"]);
+                    if($_POST["authority_k"] == "一般"){
+                        $authority_k = 0;
+                    }elseif($_POST["authority_k"] == "管理者"){
+                        $authority_k = 1;
+                    }elseif($_POST["authority_k"] == ""){
+                        $authority_k = '';
+                    }
+//                    $authority_k = htmlspecialchars($_POST["authority_k"]);
                 }else{
                     $authority_k = '';
                 }
@@ -201,83 +212,96 @@
 //                    $stmt = $pdo->prepare($sql);
 //                    $params = array(':keywordCondition' => "$keywordCondition");
 //                    $stmt->execute($params);
+                
                     
-                    
+                    if(isset($_POST["family_name_k"]) == false){
+                        $stmt = $pdo->query("select * from kadai1 where gender = 2 order by id desc");
+                    }else{
                     $stmt = $pdo->query("select * from kadai1 where ".$keywordCondition." order by id desc");
+                    $count = $stmt->rowCount();
+                    }
 //                    $stmt = $pdo->query("select * from kadai1 where family_name like '".$family_name_k."' order by id desc");
 //                    echo $keywordCondition;
-                    echo $stmt->rowCount();                
-                    echo $stmt->queryString;
+//                    echo $stmt->rowCount();
+//                    echo $stmt->queryString;
+                    
+                    
+                    
+                    if(isset($_POST["family_name_k"]) == false){
+                        echo '';
+                    }elseif($count == 0){
+                        echo '';
+                    }else{
                 ?>
-                
-                
-            <table border="1" cellspacing="0" class="ichiran" width="100%">
-                
-                
-                <tr>
-                    <td>ID</td><td>名前（姓）</td><td>名前（名）</td><td>カナ（姓）</td><td>カナ（名）</td>
-                    <td>メールアドレス</td><td>性別</td><td>アカウント権限</td>
-                    <td>削除フラグ</td><td>登録日時</td><td>更新日時</td><td colspan="2">操作</td>
-                </tr>
-                
-                
-                <?php 
-                    foreach($stmt as $row){ 
+                <table border="1" cellspacing="0" class="ichiran" width="100%">
+                    
+                    
+                    
+                    
+                    <tr>
+                        <td>ID</td><td>名前（姓）</td><td>名前（名）</td><td>カナ（姓）</td><td>カナ（名）</td>
+                        <td>メールアドレス</td><td>性別</td><td>アカウント権限</td>
+                        <td>削除フラグ</td><td>登録日時</td><td>更新日時</td><td colspan="2">操作</td>
+                    </tr>
+                    
+                    
+                <?php } 
+                foreach($stmt as $row){ 
                 ?>
-                
-                
+                    
+                    
                         
-                        <tr>
-                            <td><?php echo $row['id']; ?></td>
-                            <td><?php echo $row['family_name']; ?></td>
-                            <td><?php echo $row['last_name']; ?></td>
-                            <td><?php echo $row['family_name_kana']; ?></td>
-                            <td><?php echo $row['last_name_kana']; ?></td>
-                            <td><?php echo $row['mail']; ?></td>
-                            <td><?php if($row['gender'] == 0){ ?>
-                                    <?php echo "男"; ?>
-                                <?php }else{ ?>
-                                    <?php echo "女";?>
-                                <?php } ?>
-                            </td>
-                            <td><?php if($row['authority'] == 0){ ?>
-                                    <?php echo "一般"; ?>
-                                <?php }else{ ?>
-                                    <?php echo "管理者"; ?>
-                                <?php } ?>
-                            </td>
-                            <td><?php if($row['delete_flag'] == 0){ ?>
-                                    <?php echo "有効"; ?>
-                                <?php }else{ ?>
-                                    <?php echo "無効"; ?>
-                                <?php } ?>
-                            </td>
-                            <td><?php echo substr($row['registered_time'],0,10); ?></td>
-                            <td><?php echo substr($row['update_time'],0,10); ?></td>
+                    <tr>
+                        <td><?php echo $row['id']; ?></td>
+                        <td><?php echo $row['family_name']; ?></td>
+                        <td><?php echo $row['last_name']; ?></td>
+                        <td><?php echo $row['family_name_kana']; ?></td>
+                        <td><?php echo $row['last_name_kana']; ?></td>
+                        <td><?php echo $row['mail']; ?></td>
+                        <td><?php if($row['gender'] == 0){ ?>
+                                <?php echo "男"; ?>
+                            <?php }else{ ?>
+                                <?php echo "女";?>
+                            <?php } ?>
+                        </td>
+                        <td><?php if($row['authority'] == 0){ ?>
+                            <?php echo "一般"; ?>
+                            <?php }else{ ?>
+                            <?php echo "管理者"; ?>
+                            <?php } ?>
+                        </td>
+                        <td><?php if($row['delete_flag'] == 0){ ?>
+                            <?php echo "有効"; ?>
+                            <?php }else{ ?>
+                            <?php echo "無効"; ?>
+                            <?php } ?>
+                        </td>
+                        <td><?php echo substr($row['registered_time'],0,10); ?></td>
+                        <td><?php echo substr($row['update_time'],0,10); ?></td>
 <!--//                            表示されている年月日の頭に0がつく&「/」で区切られていない-->
-                            
-                            
-                            <td>
-                                <form action="update.php" method="post">
-                                    <?php if($row['delete_flag'] == 1){; ?>
-                                        <?php echo "更新"; ?>
-                                    <?php }else{; ?>
-                                        <?php echo '<input class="button_list" type=submit value="更新">'; ?>
-                                    <?php }; ?>
-                                    <input type="hidden" value="<?php echo $row['id']; ?>" name="id">
-                                </form>
-                            </td>
-                            <td>
-                                <form action="delete.php" method="post">
-                                    <?php if($row['delete_flag'] == 1){; ?>
-                                        <?php echo "削除"; ?>
-                                    <?php }else{; ?>
-                                        <?php echo '<input class="button_list" type=submit value="削除">'; ?>
-                                    <?php }; ?>
-                                    <input type="hidden" value="<?php echo $row['id']; ?>" name=id>
-                                </form>
-                            </td>
-                        </tr>
+                        
+                        
+                        <td>
+                            <form action="update.php" method="post">
+                                <?php if($row['delete_flag'] == 1){; ?>
+                                <?php echo "更新"; ?>
+                                <?php }else{; ?>
+                                <?php echo '<input class="button_list" type=submit value="更新">'; ?>
+                                <?php }; ?>
+                                <input type="hidden" value="<?php echo $row['id']; ?>" name="id">
+                            </form>
+                        </td>
+                        <td>
+                            <form action="delete.php" method="post">
+                                <?php if($row['delete_flag'] == 1){; ?>
+                                <?php echo "削除"; ?>
+                                <?php }else{; ?>
+                                <?php echo '<input class="button_list" type=submit value="削除">'; ?>
+                                <?php }; ?>
+                                <input type="hidden" value="<?php echo $row['id']; ?>" name=id>
+                            </form>
+                        </td>
+                    </tr>
                 <?php }
                 
             }catch(PDOException $e){ ?>
