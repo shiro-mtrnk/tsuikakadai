@@ -55,21 +55,36 @@
                 <table border="1" cellspacing="0" id="kensaku" width="100%" class="kensaku_koumoku">
                     <tr>
                         <td width="12%">名前（姓）</td>
-                        <td width="38%"><input type="text" name="family_name_k" maxlength="10" size="67%"></td>
+                        <td width="38%"><input type="text" name="family_name_k" maxlength="10" size="67%"
+                                               value="<?php if(isset($_POST['family_name_k'])){
+                                                echo $_POST['family_name_k'];
+                                            } ?>"></td>
                         <td width="12%">名前（名）</td>
-                        <td width="38%"><input type="text" name="last_name_k" maxlength="10" size="67%"></td>
+                        <td width="38%"><input type="text" name="last_name_k" maxlength="10" size="67%"
+                                               value="<?php if(isset($_POST['last_name_k'])){
+                                                echo $_POST['last_name_k'];
+                                            } ?>"></td>
                     </tr>
                     
                     <tr>
                         <td>カナ（姓）</td>
-                        <td><input type="text" name="family_name_kana_k" maxlength="10" size="67%"></td>
+                        <td><input type="text" name="family_name_kana_k" maxlength="10" size="67%"
+                                   value="<?php if(isset($_POST['family_name_kana_k'])){
+                                                echo $_POST['family_name_kana_k'];
+                                            } ?>"></td>
                         <td>カナ（名）</td>
-                        <td><input type="text" name="last_name_kana_k" maxlength="10" size="67%"></td>
+                        <td><input type="text" name="last_name_kana_k" maxlength="10" size="67%"
+                                   value="<?php if(isset($_POST['last_name_kana_k'])){
+                                                echo $_POST['last_name_kana_k'];
+                                            } ?>"></td>
                     </tr>
                     
                     <tr>
                         <td>メールアドレス</td>
-                        <td><input type="text" name="mail_k" maxlength="100" size="67%"></td>
+                        <td><input type="text" name="mail_k" maxlength="100" size="67%"
+                                   value="<?php if(isset($_POST['mail_k'])){
+                                                echo $_POST['mail_k'];
+                                            } ?>"></td>
                         <td>性別</td>
                         <td>
                             <input type="radio" name="gender_k" value="2"
@@ -82,7 +97,7 @@
                                             echo 'checked';
                                         }
                                     ?>
-                            >　選択なし
+                            >選択なし　
                             <input type="radio" name="gender_k" value="0"
                                    <?php 
                                         if(isset($_POST["gender_k"])){
@@ -91,7 +106,7 @@
                                             }
                                         }
                                     ?>   
-                            >　男
+                            >男　　
                             <input type="radio" name="gender_k" value="1"
                                    <?php 
                                         if(isset($_POST["gender_k"])){
@@ -100,7 +115,7 @@
                                             }
                                         }
                                     ?>
-                            >　女
+                            >女
                         </td>
                     </tr>
                     
@@ -196,6 +211,7 @@
                     $words = ["family_name","last_name","family_name_kana","last_name_kana","gender","mail","authority"];
                     
                     $keywordCondition = [];
+//                    ↑ここに直接$_POSTのまま入れてあげれば、160-201行目を無くせる
                     
                     foreach(array_map(NULL,$words,$keywords) as [$word,$keyword]){
                         $keywordCondition[] = $word.' like "%'.$keyword.'%"';
